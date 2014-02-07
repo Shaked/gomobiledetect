@@ -11,7 +11,7 @@ The package is imported from [MobileDetect](http://www.mobiledetect.net) which w
 
 ### Installation 
 
-    $ go get https://github.com/Shaked/gomobiledetect 
+    $ go get github.com/Shaked/gomobiledetect 
 
 ### Usage
 
