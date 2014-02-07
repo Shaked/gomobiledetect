@@ -1,6 +1,8 @@
 GoMobileDetect
 ==============
 
+[![Build Status](https://travis-ci.org/Shaked/gomobiledetect.png?branch=master)](https://travis-ci.org/Shaked/gomobiledetect)
+
 ### Description
 
 GoMobileDetect is a lightweight package imported from PHP for detecting mobile devices including tablets. 
