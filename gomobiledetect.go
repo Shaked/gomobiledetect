@@ -10,6 +10,10 @@ import (
 const (
 	//A frequently used regular expression to extract version #s.
 	verRegex = `([\w._\+]+)`
+
+	MOBILE_GRADE_A = "A"
+	MOBILE_GRADE_B = "B"
+	MOBILE_GRADE_C = "C"
 )
 
 type MobileDetect struct {
@@ -295,4 +299,54 @@ func (md *MobileDetect) Properties() map[string][]string {
 		`Symbian`:    []string{`SymbianOS/[VER]`, `Symbian/[VER]`},
 		`webOS`:      []string{`webOS/[VER]`, `hpwOS/[VER];`},
 	}
+}
+
+// MobileGrade returns a graduation similar to jQuery's Graded Browse Support
+func (md *MobileDetect) MobileGrade() string {
+	isMobile := md.IsMobile()
+
+	if md.isMobileGradeA(isMobile) {
+		return MOBILE_GRADE_A
+	}
+	if md.isMobileGradeB() {
+		return MOBILE_GRADE_B
+	}
+	return MOBILE_GRADE_C
+}
+
+func (md *MobileDetect) isMobileGradeA(isMobile bool) bool {
+	if md.VersionFloat("iPad") >= 4.3 || md.VersionFloat("iPhone") >= 4.0 || md.VersionFloat("iPod") >= 4.0 ||
+		(md.VersionFloat("Android") > 2.1 && md.Is("Webkit")) ||
+		md.VersionFloat("Windows Phone OS") >= 7.0 ||
+		md.Is("BlackBerry") && md.VersionFloat("BlackBerry") >= 6.0 ||
+		md.match("Playbook.*Tablet") ||
+		(md.VersionFloat("webOS") >= 1.4 && md.match("Palm|Pre|Pixi")) ||
+		md.match("hp.*TouchPad") ||
+		(md.Is("Firefox") && md.VersionFloat("Firefox") >= 12) ||
+		(md.Is("Chrome") && md.Is("AndroidOS") && md.VersionFloat("Android") >= 4.0) ||
+		(md.Is("Skyfire") && md.VersionFloat("Skyfire") >= 4.1 && md.Is("AndroidOS") && md.VersionFloat("Android") >= 2.3) ||
+		(md.Is("Opera") && md.VersionFloat("Opera Mobi") > 11 && md.Is("AndroidOS")) ||
+		md.Is("MeeGoOS") ||
+		md.Is("Tizen") ||
+		md.Is("Dolfin") && md.VersionFloat("Bada") >= 2.0 ||
+		((md.Is("UC Browser") || md.Is("Dolfin")) && md.VersionFloat("Android") >= 2.3) ||
+		(md.match("Kindle Fire") || md.Is("Kindle") && md.VersionFloat("Kindle") >= 3.0) ||
+		(md.Is("AndroidOS") && md.Is("NookTablet")) ||
+		(md.VersionFloat("Chrome") >= 11 && isMobile) ||
+		(md.VersionFloat("Safari") >= 5.0 && isMobile) ||
+		(md.VersionFloat("Firefox") >= 4.0 && isMobile) ||
+		(md.VersionFloat("MSIE") >= 7.0 && isMobile) ||
+		(md.VersionFloat("Opera") >= 10 && isMobile) {
+		return true
+	}
+	return false
+}
+func (md *MobileDetect) isMobileGradeB() bool {
+	if (md.Is("Blackberry") && md.VersionFloat("BlackBerry") >= 5 && md.VersionFloat("BlackBerry") < 6) ||
+		(md.VersionFloat("Opera Mini") >= 5.0 && md.VersionFloat("Opera Mini") <= 6.5 && (md.VersionFloat("Android") >= 2.3 || md.Is("iOS"))) ||
+		md.match("NokiaN8|NokiaC7|N97.*Series60|Symbian/3") ||
+		(md.VersionFloat("Opera Mobi") >= 11 && md.Is("SymbianOS")) {
+		return true
+	}
+	return false
 }
