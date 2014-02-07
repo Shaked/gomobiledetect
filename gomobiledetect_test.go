@@ -1,11 +1,11 @@
 package gomobiledetect
 
-import "testing"
+import (
+	"net/http"
+	"testing"
+)
 
-func NewDetect() *MobileDetect {
-	rules := NewRules()
-	return NewMobileDetect(rules)
-}
+var httpRequest = &http.Request{}
 
 type basicMethodsStruct struct {
 	httpHeaders          map[string]string
@@ -138,7 +138,7 @@ func BasicMethodsData() []basicMethodsStruct {
 }
 
 func TestBasicMethods(t *testing.T) {
-	detect := NewDetect()
+	detect := NewMobileDetect(httpRequest, nil)
 	for _, data := range BasicMethodsData() {
 		detect.SetHttpHeaders(data.httpHeaders)
 
@@ -197,7 +197,7 @@ func QuickHeadersData() []map[string]string {
 }
 
 func TestQuickHeaders(t *testing.T) {
-	detect := NewDetect()
+	detect := NewMobileDetect(httpRequest, nil)
 	for _, httpHeaders := range QuickHeadersData() {
 		detect.SetHttpHeaders(httpHeaders)
 		if true != detect.CheckHttpHeadersForMobile() {
@@ -218,7 +218,7 @@ func QuickNonMobileHeadersData() []map[string]string {
 }
 
 func TestNonMobileQuickHeaders(t *testing.T) {
-	detect := NewDetect()
+	detect := NewMobileDetect(httpRequest, nil)
 	for _, httpHeaders := range QuickNonMobileHeadersData() {
 		detect.SetHttpHeaders(httpHeaders)
 		if false != detect.CheckHttpHeadersForMobile() {
@@ -284,7 +284,7 @@ func VersionData() []versionDataStruct {
 
 //todo: check if this test is testing the code or testing that the data is correct
 func TestVersionExtraction(t *testing.T) {
-	detect := NewDetect()
+	detect := NewMobileDetect(httpRequest, nil)
 
 	for _, data := range VersionData() {
 		userAgent := data.userAgent

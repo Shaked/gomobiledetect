@@ -11,16 +11,3 @@ func TestGetMobileDetectionRules(t *testing.T) {
 		t.Errorf("Values length should be the same (count %d, values %d)", count, valuesLength)
 	}
 }
-
-// public function testRules()
-// {
-//     $md = new Mobile_Detect;
-//     $count = array_sum(array(
-//         count(Mobile_Detect::getPhoneDevices()),
-//         count(Mobile_Detect::getTabletDevices()),
-//         count(Mobile_Detect::getOperatingSystems()),
-//         count(Mobile_Detect::getBrowsers())
-//     ));
-//     $rules = $md->getRules();
-//     $this->assertEquals($count, count($rules));
-// }

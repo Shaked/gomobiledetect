@@ -30,8 +30,8 @@ var (
 		`GenericPhone`: `Tapatalk|PDA;|SAGEM|\bmmp\b|pocket|\bpsp\b|symbian|Smartphone|smartfon|treo|up.browser|up.link|vodafone|\bwap\b|nokia|Series40|Series60|S60|SonyEricsson|N900|MAUI.*WAP.*Browser`,
 	}
 	tabletDevices = map[string]string{
-		`iPad`:          `iPad|iPad.*Mobile`, // @todo: check for mobile friendly emails topic.
-		`NexusTablet`:   `^.*Android.*Nexus(((?:(?!Mobile))|(?:(\s(7|10).+))).)*$`,
+		`iPad`: `iPad|iPad.*Mobile`, // @todo: check for mobile friendly emails topic.
+		//`NexusTablet`:   `^.*Android.*Nexus(((?:(?!Mobile))|(?:(\s(7|10).+))).)*$`,
 		`SamsungTablet`: `SAMSUNG.*Tablet|Galaxy.*Tab|SC-01C|GT-P1000|GT-P1003|GT-P1010|GT-P3105|GT-P6210|GT-P6800|GT-P6810|GT-P7100|GT-P7300|GT-P7310|GT-P7500|GT-P7510|SCH-I800|SCH-I815|SCH-I905|SGH-I957|SGH-I987|SGH-T849|SGH-T859|SGH-T869|SPH-P100|GT-P3100|GT-P3108|GT-P3110|GT-P5100|GT-P5110|GT-P6200|GT-P7320|GT-P7511|GT-N8000|GT-P8510|SGH-I497|SPH-P500|SGH-T779|SCH-I705|SCH-I915|GT-N8013|GT-P3113|GT-P5113|GT-P8110|GT-N8010|GT-N8005|GT-N8020|GT-P1013|GT-P6201|GT-P7501|GT-N5100|GT-N5110|SHV-E140K|SHV-E140L|SHV-E140S|SHV-E150S|SHV-E230K|SHV-E230L|SHV-E230S|SHW-M180K|SHW-M180L|SHW-M180S|SHW-M180W|SHW-M300W|SHW-M305W|SHW-M380K|SHW-M380S|SHW-M380W|SHW-M430W|SHW-M480K|SHW-M480S|SHW-M480W|SHW-M485W|SHW-M486W|SHW-M500W|GT-I9228|SCH-P739|SCH-I925|GT-I9200|GT-I9205|GT-P5200|GT-P5210|SM-T311|SM-T310|SM-T210|SM-T210R|SM-T211|SM-P600|SM-P601|SM-P605|SM-P900|SM-T217|SM-T217A|SM-T217S|SM-P6000|SM-T3100|SGH-I467|XE500`,
 		// @reference: http://www.labnol.org/software/kindle-user-agent-string/20378/
 		`Kindle`: `Kindle|Silk.*Accelerated|Android.*\b(KFOT|KFTT|KFJWI|KFJWA|KFOTE|KFSOWI|KFTHWI|KFTHWA|KFAPWI|KFAPWA|WFJWAE)\b`,
@@ -41,7 +41,7 @@ var (
 		// @ref: http://shopping1.hp.com/is-bin/INTERSHOP.enfinity/WFS/WW-USSMBPublicStore-Site/en_US/-/USD/ViewStandardCatalog-Browse?CatalogCategoryID=JfIQ7EN5lqMAAAEyDcJUDwMT
 		`HPTablet`: `HP Slate 7|HP ElitePad 900|hp-tablet|EliteBook.*Touch`,
 		// @note: watch out for PadFone, see #132
-		`AsusTablet`:       `^.*PadFone((?!Mobile).)*$|Transformer|TF101|TF101G|TF300T|TF300TG|TF300TL|TF700T|TF700KL|TF701T|TF810C|ME171|ME301T|ME302C|ME371MG|ME370T|ME372MG|ME172V|ME173X|ME400C|Slider SL101|\bK00F\b|TX201LA`,
+		// `AsusTablet`:       `^.*PadFone((?!Mobile).)*$|Transformer|TF101|TF101G|TF300T|TF300TG|TF300TL|TF700T|TF700KL|TF701T|TF810C|ME171|ME301T|ME302C|ME371MG|ME370T|ME372MG|ME172V|ME173X|ME400C|Slider SL101|\bK00F\b|TX201LA`,
 		`BlackBerryTablet`: `PlayBook|RIM Tablet`,
 		`HTCtablet`:        `HTC Flyer|HTC Jetstream|HTC-P715a|HTC EVO View 4G|PG41200`,
 		`MotorolaTablet`:   `xoom|sholest|MZ615|MZ605|MZ505|MZ601|MZ602|MZ603|MZ604|MZ606|MZ607|MZ608|MZ609|MZ615|MZ616|MZ617`,
@@ -181,7 +181,7 @@ var (
 		`Hudl`: `Hudl HT7S3`,
 		// @ref: http://www.telstra.com.au/home-phone/thub-2/
 		`TelstraTablet`: `T-Hub2`,
-		`GenericTablet`: `Android.*\b97D\b|Tablet(?!.*PC)|ViewPad7|BNTV250A|MID-WCDMA|LogicPD Zoom2|\bA7EB\b|CatNova8|A1_07|CT704|CT1002|\bM721\b|rk30sdk|\bEVOTAB\b|SmartTabII10|SmartTab10|M758A|ET904|ALUMIUM10`,
+		//`GenericTablet`: `Android.*\b97D\b|Tablet(?!.*PC)|ViewPad7|BNTV250A|MID-WCDMA|LogicPD Zoom2|\bA7EB\b|CatNova8|A1_07|CT704|CT1002|\bM721\b|rk30sdk|\bEVOTAB\b|SmartTabII10|SmartTab10|M758A|ET904|ALUMIUM10`,
 	}
 	operatingSystems = map[string]string{
 		`AndroidOS`:    `Android`,
@@ -269,6 +269,7 @@ func (rules *rules) setMobileDetectionRules() {
 		mobileDetectionRules[ruleName] = ruleValue
 	}
 
+	//TODO: why is it suppose to be here?
 	for ruleName, ruleValue := range rules.browsers {
 		mobileDetectionRules[ruleName] = ruleValue
 	}

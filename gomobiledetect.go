@@ -1,6 +1,7 @@
 package gomobiledetect
 
 import (
+	"net/http"
 	"regexp"
 	"strconv"
 	"strings"
@@ -8,7 +9,7 @@ import (
 
 const (
 	//A frequently used regular expression to extract version #s.
-	VER = `([\w._\+]+)`
+	verRegex = `([\w._\+]+)`
 )
 
 type MobileDetect struct {
@@ -18,9 +19,35 @@ type MobileDetect struct {
 	mobileDetectionRules map[string]string
 }
 
-func NewMobileDetect(rules *rules) *MobileDetect {
-	md := &MobileDetect{rules: rules}
+func NewMobileDetect(r *http.Request, rules *rules) *MobileDetect {
+	if nil == rules {
+		rules = NewRules()
+	}
+	md := &MobileDetect{rules: rules, userAgent: r.UserAgent(), httpHeaders: getHttpHeaders(r)}
 	return md
+}
+
+func getHttpHeaders(r *http.Request) map[string]string {
+	httpHeaders := map[string]string{
+		"SERVER_SOFTWARE":  r.Header.Get("SERVER_SOFTWARE"),
+		"REQUEST_METHOD":   r.Method,
+		"HOST":             r.Host,
+		"X_REAL_IP":        r.Header.Get("X_REAL_IP"),
+		"X_FORWARDED_FOR":  r.Header.Get("X_FORWARDED_FOR"),
+		"CONNECTION":       r.Header.Get("CONNECTION"),
+		"USER-AGENT":       r.UserAgent(),
+		"ACCEPT":           r.Header.Get("ACCEPT"),
+		"ACCEPT-LANGUAGE":  r.Header.Get("ACCEPT-LANGUAGE"),
+		"ACCEPT-ENCODING":  r.Header.Get("ACCEPT-ENCODING"),
+		"X_REQUESTED_WITH": r.Header.Get("X_REQUESTED_WITH"),
+		"REFERER":          r.Referer(),
+		"PRAGMA":           r.Header.Get("PRAGMA"),
+		"CACHE_CONTROL":    r.Header.Get("CACHE_CONTROL"),
+		"REMOTE_ADDR":      r.RemoteAddr,
+		"REQUEST_TIME":     r.Header.Get("REQUEST_TIME"),
+	}
+
+	return httpHeaders
 }
 
 func (md *MobileDetect) SetUserAgent(userAgent string) *MobileDetect {
@@ -59,7 +86,7 @@ func (md *MobileDetect) Version(propertyName string) string {
 
 		if _, ok := properties[propertyName]; ok {
 			for _, propertyMatchString := range properties[propertyName] {
-				propertyPattern := `(?is)` + strings.Replace(string(propertyMatchString), `[VER]`, VER, -1)
+				propertyPattern := `(?is)` + strings.Replace(string(propertyMatchString), `[VER]`, verRegex, -1)
 
 				// Escape the special character which is the delimiter.
 				//propertyPattern = strings.Replace(propertyPattern, `/`, `\/`, -1)
@@ -122,13 +149,14 @@ func (md *MobileDetect) matchUAAgainstKey(key string) bool {
 
 //Find a detection rule that matches the current User-agent.
 func (md *MobileDetect) matchDetectionRulesAgainstUA() bool {
-	for rule := range md.rules.getMobileDetectionRules() {
-		if "" != rule {
-			if md.match(rule) {
+	for _, ruleValue := range md.rules.getMobileDetectionRules() {
+		if "" != ruleValue {
+			if md.match(ruleValue) {
 				return true
 			}
 		}
 	}
+
 	return false
 }
 
@@ -139,8 +167,10 @@ func (md *MobileDetect) matchDetectionRulesAgainstUA() bool {
 func (md *MobileDetect) match(rule string) bool {
 	//Escape the special character which is the delimiter
 	//rule = strings.Replace(rule, `\`, `\/`, -1)
-	re := regexp.MustCompile(`(?is)` + rule)
-	return re.MatchString(md.userAgent)
+	rule = `(?is)` + rule
+	re := regexp.MustCompile(rule)
+	ret := re.MatchString(md.userAgent)
+	return ret
 }
 
 func (md *MobileDetect) CheckHttpHeadersForMobile() bool {
