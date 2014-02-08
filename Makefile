@@ -8,5 +8,8 @@ coverage: format
 format: 
 	go fmt
 
-clean: 
-		rm -rf ${COVERAGE_DIRECTORY}
+clean:
+	rm -rf ${COVERAGE_DIRECTORY}
+
+doc:
+	godoc . 1> manual.txt
