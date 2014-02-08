@@ -235,6 +235,7 @@ var (
 	}
 )
 
+// rules of detection for each kind of browser
 type rules struct {
 	phoneDevices         map[string]string
 	tabletDevices        map[string]string
@@ -244,6 +245,7 @@ type rules struct {
 	mobileDetectionRules map[string]string
 }
 
+// NewRules creates a object with all rules necessary to figure out a browser from a User Agent string
 func NewRules() *rules {
 	rules := &rules{phoneDevices: phoneDevices, tabletDevices: tabletDevices, operatingSystems: operatingSystems, browsers: browsers}
 	rules.setMobileDetectionRules()

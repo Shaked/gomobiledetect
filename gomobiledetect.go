@@ -1,3 +1,4 @@
+// Gomobiledetect is a lightweight Go package imported from PHP for detecting mobile devices (including tablets). It uses the User-Agent string combined with specific HTTP headers to detect the mobile environment
 package gomobiledetect
 
 import (
@@ -16,6 +17,7 @@ const (
 	MOBILE_GRADE_C = "C"
 )
 
+// MobileDetect holds the structure to figure out a browser from a UserAgent string and methods necessary to make it happen
 type MobileDetect struct {
 	rules                *rules
 	userAgent            string
@@ -23,6 +25,7 @@ type MobileDetect struct {
 	mobileDetectionRules map[string]string
 }
 
+// NewMobileDetect creates the MobileDetect object
 func NewMobileDetect(r *http.Request, rules *rules) *MobileDetect {
 	if nil == rules {
 		rules = NewRules()
@@ -64,6 +67,7 @@ func (md *MobileDetect) SetHttpHeaders(httpHeaders map[string]string) *MobileDet
 	return md
 }
 
+// IsMobile is a specific case to detect only mobile browsers.
 func (md *MobileDetect) IsMobile() bool {
 	if md.CheckHttpHeadersForMobile() {
 		return true
@@ -71,6 +75,7 @@ func (md *MobileDetect) IsMobile() bool {
 	return md.matchDetectionRulesAgainstUA()
 }
 
+// IsMobile is a specific case to detect only mobile browsers on tablets. Do not overlap with IsMobile
 func (md *MobileDetect) IsTablet() bool {
 	for rule := range md.rules.tabletDevices {
 		if md.match(rule) {
@@ -80,10 +85,12 @@ func (md *MobileDetect) IsTablet() bool {
 	return false
 }
 
+// Is compared the detected browser with a "rule"
 func (md *MobileDetect) Is(key string) bool {
 	return md.matchUAAgainstKey(key)
 }
 
+// Version detects the browser version returning as string
 func (md *MobileDetect) Version(propertyName string) string {
 	if "" != propertyName {
 		properties := md.Properties()
@@ -107,6 +114,7 @@ func (md *MobileDetect) Version(propertyName string) string {
 	return ""
 }
 
+// VersionFloat does the same as Version, but returns a float number good for version comparison
 func (md *MobileDetect) VersionFloat(propertyName string) float64 {
 	version := md.Version(propertyName)
 	replacer := strings.NewReplacer(`_`, `.`, `/`, `.`)
@@ -177,6 +185,7 @@ func (md *MobileDetect) match(rule string) bool {
 	return ret
 }
 
+// CheckHttpHeadersForMobile looks for mobile rules to confirm if the browser is a mobile browser
 func (md *MobileDetect) CheckHttpHeadersForMobile() bool {
 	for _, mobileHeader := range md.getMobileHeaders() {
 		if headerString, ok := md.httpHeaders[mobileHeader]; ok {
@@ -235,7 +244,7 @@ func (md *MobileDetect) getMobileHeaderMatches() map[string][]string {
 	}
 }
 
-//The individual segments that could exist in a User-Agent string.
+// Properties helps parsing User Agent string, extracting useful segments of text.
 //VER refers to the regular expression defined in the constant self::VER.
 func (md *MobileDetect) Properties() map[string][]string {
 	return map[string][]string{
