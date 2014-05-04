@@ -1612,10 +1612,1802 @@ var uaListTests = []struct {
 			``,
 		},
 	},
+	//HTC
+	{
+		`Mozilla/5.0 (X11; Linux x86_64; Z520m; en-ca) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/11.0.696.34 Safari/534.24`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`HTC_Touch_HD_T8282 Mozilla/4.0 (compatible; MSIE 6.0; Windows CE; IEMobile 7.11)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 1.5; en-us; ADR6200 Build/CUPCAKE) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.1; xx-xx; Desire_A8181 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.1-update1; de-de; HTC Desire 1.19.161.5 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.1-update1; en-gb; HTC Desire Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.1-update1; de-de; HTC Desire 1.19.161.5 Build/ERE27) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.2; fr-fr; HTC Desire Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.2; en-dk; Desire_A8181 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.2; xx-xx; 001HT Build/FRF91) AppleWebKit/525.10+ (KHTML, like Gecko) Version/3.0.4 Mobile Safari/523.12.2`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.2; xx-xx; HTCA8180/1.0 Android/2.2 release/06.23.2010 Browser/WAP 2.0 Profile/MIDP-2.0 Configuration/CLDC-1.1 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.2.2; de-at; HTC Desire Build/FRG83G) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.2.2; en-sk; Desire_A8181 Build/FRG83G) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3; xx-xx; HTC/DesireS/1.07.163.1 Build/GRH78C) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.3; en-lv; HTC_DesireZ_A7272 Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.4; en-us; ADR6300 Build/GRJ22) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.5; en-gb; HTC/DesireS/2.10.161.3 Build/GRJ90) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.5; ru-ru; HTC_DesireS_S510e Build/GRJ90) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.5; en-us; Inspire 4G Build/GRJ90) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.5; de-de; HTC Explorer A310e Build/GRJ90) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.5; en-gb; HTC_ChaCha_A810e Build/GRJ90) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.5; nl-nl; HTC_DesireHD_A9191 Build/GRJ90) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.5; ru-ru; HTC Desire S Build/GRJ90) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.3; en-au; HTC Desire Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.5; de-de; HTC_DesireHD Build/GRJ90) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.5; ru-ua; HTC_WildfireS_A510e Build/GRJ90) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.7; en-us; HTC Vision Build/GRI40; ILWT-CM7) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0; xx-xx; HTC_GOF_U/1.05.161.1 Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; hu-hu; HTC Sensation Z710e Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; pl-pl; EVO3D_X515m Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; ru-ru; HTC_One_S Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; ru-ru; HTC_One_V Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; zh-cn; HTC_A320e Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; zh-tw; HTC Desire V Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.3; PG86100 Build/IML74K) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; en-nl; SensationXE_Beats_Z715e Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; en-us; ADR6425LVW 4G Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.3; HTC One V Build/IML74K) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; cs-ee; Sensation_Z710e Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; en-us; HTC Evo 4G Build/MIUI) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.4; Desire HD Build/IMM76D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; en-my; HTC_One_X Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; it-it; IncredibleS_S710e Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; fr-fr; HTC_Desire_S Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.1; HTC One X Build/JRO03C) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.1; HTC Butterfly Build/JRO03C) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.1; EVO Build/JRO03C) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.169 Mobile Safari/537.22`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.2; HTCSensation Build/JRO03C) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.99 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; TITAN X310e)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Radar C110e)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; T8788)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC 7 Mozart T8698; QSD8x50)`,
+		expectedResult{
+			true,
+			false,
+			map[string]string{
+				`IE`:               `9.0`,
+				`Windows Phone OS`: `7.5`,
+				`Trident`:          `5.0`,
+			},
+			`7 Mozart T8698`,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; 7 HTC MOZART)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; 7 Mondrian T8788)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; 7 Mozart T8698)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; 7 Mozart)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; 7 Mozart; Orange)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; 7 Pro T7576)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; 7 Pro)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; 7 Schubert T9292)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; 7 Surround)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; 7 Trophy T8686)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; 7 Trophy)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Eternity)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Gold)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; HD2 LEO)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; HD2)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; HD7 T9292)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; HD7)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; iPad 3)`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; LEO)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Mazaa)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Mondrian)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Mozart T8698)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Mozart)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; mwp6985)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; PC40100)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; PC40200)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; PD67100)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; PI39100)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; PI86100)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Radar 4G)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Radar C110e)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Radar C110e; 1.08.164.02)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Radar C110e; 2.05.164.01)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Radar C110e; 2.05.168.02)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Radar)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Radar; Orange)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Schuber)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Schubert T9292)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Schubert)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Spark)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Surround)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; T7575)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; T8697)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; T8788)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; T9295)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; T9296)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; TITAN X310e)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Titan)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Torphy T8686)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; X310e)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC_blocked; T8788)`,
+		expectedResult{
+			true,
+			false,
+			map[string]string{
+				`IE`:               `9.0`,
+				`Windows Phone OS`: `7.5`,
+				`Trident`:          `5.0`,
+			},
+			`T8788`,
+		},
+	},
+	//Hudl
+	{
+		`Mozilla/5.0 (Linux; Android 4.2.2; Hudl HT7S3 Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.82 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//Huwaei
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.1-update1; bg-bg; Ideos S7 Build/ERE27) AppleWebKit/525.10+ (KHTML, like Gecko) Version/3.0.4 Mobile Safari/523.12.2`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.1; en-us; Ideos S7 Build/ERE27) AppleWebKit/525.10+ (KHTML, like Gecko) Version/3.0.4 Mobile Safari/523.12.2`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.6; lt-lt; U8660 Build/HuaweiU8660) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.7; ru-ru; HUAWEI-U8850 Build/HuaweiU8850) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 3.2; pl-pl; MediaPad Build/HuaweiMediaPad) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 3.2; nl-nl; HUAWEI MediaPad Build/HuaweiMediaPad) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`HUAWEI_T8951_TD/1.0 Android/4.0.4 (Linux; U; Android 4.0.4; zh-cn) Release/05.31.2012 Browser/WAP2.0 (AppleWebKit/534.30) Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.2; ar-eg; MediaPad 7 Youth Build/HuaweiMediaPad) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.2; zh-cn; HW-HUAWEI_C8815/C8815V100R001C541B135; 540*960; CTC/2.0) AppleWebKit/534.30 (KHTML, like Gecko) Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; zh-cn; HW-HUAWEI_C8813D/C8813DV100R001C92B172; 480*854; CTC/2.0) AppleWebKit/534.30 (KHTML, like Gecko) Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; zh-cn; HW-HUAWEI_Y300C/Y300CV100R001C92B168; 480*800; CTC/2.0) AppleWebKit/534.30 (KHTML, like Gecko) Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	//iJoy
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; fr-fr; Tablet Planet II-v3 Build/JRO03H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//Intenso
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1.;de-de; INM8002KP Build/JR003H) AppleWebKit/534.30 (KHTML, like Gecko)Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.1.1.`,
+				`Webkit`:  `534.30`,
+				`Safari`:  `4.0`,
+			},
+			``,
+		},
+	},
+	//IRU
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; ru-ru; M702pro Build/JRO03C) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//JXD
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; en-us; F3000 Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//Karbonn
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.1; ST10 Build/JRO03C) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//Kobo
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.0; en-us;) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 (Kobo Touch)`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `2.0`,
+				`Webkit`:  `533.1`,
+				`Safari`:  `4.0`,
+			},
+			``,
+		},
+	},
+	//Lenovo
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; es-es; IdeaTab_A1107 Build/MR1) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.3; IdeaTab A2107A-H Build/IML74K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.90 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; en-au; ThinkPad Tablet Build/ThinkPadTablet_A400_03) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//LG
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.2; en-us; LG-P509 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.2.2; pt-br; LG-P350f Build/FRG83G) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.3; en-us; LG-P500 Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.3; en-us; LS670 Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.4; ru-ru; LG-E510 Build/GRJ22) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 MMS/LG-Android-MMS-V1.0/1.2`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.4; en-us; VS910 4G Build/GRJ22) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; nl-nl; LG-P700 Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; en-us; LG-F160S Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; nl-nl; LG-E610v/V10f Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; en-us; LG-E612 Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.2; LG-F180K Build/JZO54K) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.2.2; LG-V500 Build/JDQ39B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.59 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; LG; LG E-900)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; LG; LG-C900)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; LG; LG-E900)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; LG; LG-E900; Orange)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; LG; LG-E900h)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; LG; LG-Optimus 7)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	// @ref: http://ja.wikipedia.org/wiki/L-06C
+	{
+		`Mozilla/5.0 (Linux; U; Android 3.0.1; ja-jp; L-06C Build/HRI66) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 3.0; en-us; LG-V900 Build/HRI39) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//Megafon
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.5; ru-ru; MegaFon V9 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.1; MT7A Build/JRO03C) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.58 Safari/537.31`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//MediaTek
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; fr-fr; MT8377 Build/JRO03C) AppleWebKit/534.30 (KHTML like Gecko) Version/4.0 Safari/534.30/4.05d.1002.m7`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//Micromax
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.1; Micromax A110 Build/JRO03C) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.169 Mobile Safari/537.22`,
+		expectedResult{
+			true,
+			false,
+			map[string]string{
+				`Android`: `4.1.1`,
+				`Build`:   `JRO03C`,
+				`Webkit`:  `537.22`,
+				`Chrome`:  `25.0.1364.169`,
+			},
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0; xx-xx; Micromax P250(Funbook) Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.0`,
+				`Build`:   `IMM76D`,
+				`Webkit`:  `534.30`,
+				`Safari`:  `4.0`,
+			},
+			``,
+		},
+	},
+	//Microsoft
+	// Surface tablet
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0; Touch; .NET4.0E; .NET4.0C; Tablet PC 2.0)`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`IE`:         `10.0`,
+				`Windows NT`: `6.2`,
+				`Trident`:    `6.0`,
+			},
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0)`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0; Touch)`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0; Touch; ARMBJS)`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Win64; x64; Trident/6.0; Touch; MASMJS)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	// Thanks to Jonathan Donzallaz!
+	// Firefox (nightly) in metro mode on Dell XPS 12
+	{
+		`Mozilla/5.0 (Windows NT 6.2; WOW64; rv:25.0) Gecko/20130626 Firefox/25.0`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	// Firefox in desktop mode on Dell XPS 12
+	{
+		`Mozilla/5.0 (Windows NT 6.2; WOW64; rv:22.0) Gecko/20100101 Firefox/22.0`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	// IE10 in metro mode on Dell XPS 12
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Win64; x64; Trident/6.0; MDDCJS)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	// IE10 in desktop mode on Dell XPS 12
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0; MDDCJS)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	// Opera on Dell XPS 12
+	{
+		`Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Safari/537.36 OPR/15.0.1147.130`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	// Chrome on Dell XPS 12
+	{
+		`Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	// Google search app from Windows Store
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Win64; x64; Trident/6.0; Touch; MDDCJS; WebView/1.0)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	// Modecom
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.2; pl-pl; FreeTAB 1014 IPS X4+ Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	// Motorola
+	{
+		`MOT-W510/08.11.05R MIB/BER2.2 Profile/MIDP-2.0 Configuration/CLDC-1.1 EGE/1.0 UP.Link/6.3.0.0.0`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.2.2; zh-cn; ME722 Build/MLS2GC_2.6.0) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.4; en-us; DROIDX Build/4.5.1_57_DX8-51) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.5; en-us; MB855 Build/4.5.1A-1_SUN-254_13) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.5; es-us; MB526 Build/4.5.2-51_DFL-50) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.6; en-ca; MB860 Build/4.5.2A-51_OLL-17.8) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.7; en-us; MOT-XT535 Build/V1.540) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.7; ko-kr; A853 Build/SHOLS_U2_05.26.3; CyanogenMod-7.1.2) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 3.0; en-us; Xoom Build/HRI39) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 3.1; en-us; Xoom Build/HMJ25) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; en-us; DROID RAZR 4G Build/6.7.2-180_DHD-16_M4-31) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; en-us; Xoom Build/IMM76L) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; pt-br; XT687 Build/V2.27D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			map[string]string{
+				`Android`: `4.0.4`,
+				`Webkit`:  `534.30`,
+				`Safari`:  `4.0`,
+			},
+			`XT687`,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; es-es; MOT-XT910 Build/6.7.2-180_SPU-19-TA-11.6) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.2; XT910 Build/9.8.2O-124_SPUL-17) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.2; XT915 Build/2_32A_2031) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.94 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.2; XT919 Build/2_290_2017) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.64 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.2; XT925 Build/9.8.2Q-50-XT925_VQLM-20) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.90 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.2; XT907 Build/9.8.1Q-66) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.90 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.2; XT901 Build/9.8.2Q-50_SLS-13) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.2; DROID BIONIC Build/9.8.2O-72_VZW-22) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.99 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	// Nabi @ref: https://www.nabitablet.com/
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.2.1; en-us; NABI-A Build/MASTER) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	// NEC
+	// @ref: http://www.n-keitai.com/n-08d/?from=mediasnet
+	// @ref: http://devlog.dcm-gate.com/2012/03/medias-tab-n-06duseragnet.html
+	// @ref: http://keitaiall.jp/N-08D.html aka MEDIAS TAB
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; ja-jp; N-08D Build/A5001911) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android AAA; BBB; N-06D Build/CCC) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//Nook
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.2.1; en-us; NOOK BNRV200 Build/ERD79 1.4.3) Apple WebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `2.2.1`,
+				`Webkit`:  `533.1`,
+				`Safari`:  `4.0`,
+			},
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; en-us; NOOK BNTV400 Build/ICS) AppleWebKit/534.30 (KHTML like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.0.4`,
+				`Webkit`:  `534.30`,
+				`Safari`:  `4.0`,
+				`Build`:   `ICS`,
+			},
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.4; BNTV600 Build/IMM76L) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.94 Safari/537.36 Hughes-PFB/CID5391275.AID1376709964`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.0.4`,
+				`Webkit`:  `537.36`,
+				`Chrome`:  `28.0.1500.94`,
+				`Build`:   `IMM76L`,
+			},
+			``,
+		},
+	},
 	/**
 
-	*
-	 */
+
+
+	*/
 }
 
 type uaListResult struct {
