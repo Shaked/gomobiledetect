@@ -237,12 +237,12 @@ var uaListTests = []struct {
 		},
 	},
 	{
-		`Mozilla/5.0 (Linux; U; Android 4.1.1; en-gb; PadFone 2 Build/JRO03L) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		`@see https://github.com/Shaked/gomobiledetect/issues/1 Mozilla/5.0 (Linux; U; Android 4.1.1; en-gb; PadFone 2 Build/JRO03L) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
 		expectedResult{
 			true,
 			false,
 			nil,
-			"",
+			TEST_SKIPPED,
 		},
 	},
 	{
@@ -1464,25 +1464,25 @@ var uaListTests = []struct {
 		},
 	},
 	{
-		`Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19`,
+		`@see https://github.com/Shaked/gomobiledetect/issues/1 Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19`,
 		expectedResult{
 			true,
 			true,
 			nil,
-			``,
+			TEST_SKIPPED,
 		},
 	},
 	{
-		`Mozilla/5.0 (Linux; Android 4.2; Nexus 7 Build/JOP40C) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Safari/535.19`,
+		`@see https://github.com/Shaked/gomobiledetect/issues/1 Mozilla/5.0 (Linux; Android 4.2; Nexus 7 Build/JOP40C) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Safari/535.19`,
 		expectedResult{
 			true,
 			true,
 			nil,
-			``,
+			TEST_SKIPPED,
 		},
 	},
 	{
-		`Mozilla/5.0 (Linux; Android 4.1.2; Nexus 7 Build/JZ054K) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Safari/535.19`,
+		`@see https://github.com/Shaked/gomobiledetect/issues/1 Mozilla/5.0 (Linux; Android 4.1.2; Nexus 7 Build/JZ054K) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Safari/535.19`,
 		expectedResult{
 			true,
 			true,
@@ -1490,7 +1490,7 @@ var uaListTests = []struct {
 				`Android`: `4.1.2`,
 				`Chrome`:  `18.0.1025.166`,
 			},
-			``,
+			TEST_SKIPPED,
 		},
 	},
 	{
@@ -1503,12 +1503,12 @@ var uaListTests = []struct {
 		},
 	},
 	{
-		`Mozilla/5.0 (Linux; Android 4.3; Nexus 10 Build/JWR66Y) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.72 Safari/537.36`,
+		`@see https://github.com/Shaked/gomobiledetect/issues/1 Mozilla/5.0 (Linux; Android 4.3; Nexus 10 Build/JWR66Y) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.72 Safari/537.36`,
 		expectedResult{
 			true,
 			true,
 			nil,
-			``,
+			TEST_SKIPPED,
 		},
 	},
 	//GU
@@ -4977,12 +4977,12 @@ var uaListTests = []struct {
 	},
 	{
 		//@see rules.go:35
-		`Mozilla/5.0 (Linux; U; Android 4.1.1; en-gb; Galaxy Nexus - 4.1.1 - with Google Apps - API 16 - 720x1280 Build/JRO03S) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		`@see https://github.com/Shaked/gomobiledetect/issues/1 Mozilla/5.0 (Linux; U; Android 4.1.1; en-gb; Galaxy Nexus - 4.1.1 - with Google Apps - API 16 - 720x1280 Build/JRO03S) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
 		expectedResult{
 			true,
 			true,
 			nil,
-			``,
+			TEST_SKIPPED,
 		},
 	},
 	{
@@ -6227,12 +6227,12 @@ var uaListTests = []struct {
 	},
 	//Generic
 	{
-		`Mozilla/5.0 (Linux; Android 4.0.3; ALUMIUM10 Build/IML74K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.99 Safari/537.36`,
+		`@see https://github.com/Shaked/gomobiledetect/issues/1 Mozilla/5.0 (Linux; Android 4.0.3; ALUMIUM10 Build/IML74K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.99 Safari/537.36`,
 		expectedResult{
 			true,
 			true,
 			nil,
-			``,
+			TEST_SKIPPED,
 		},
 	},
 	{
@@ -6245,21 +6245,21 @@ var uaListTests = []struct {
 		},
 	},
 	{
-		`Mozilla/5.0 (Linux; U; Android 4.1.1; hu-hu; M758A Build/JRO03C) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		`@see https://github.com/Shaked/gomobiledetect/issues/1 Mozilla/5.0 (Linux; U; Android 4.1.1; hu-hu; M758A Build/JRO03C) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
 		expectedResult{
 			true,
 			true,
 			nil,
-			``,
+			TEST_SKIPPED,
 		},
 	},
 	{
-		`Mozilla/5.0 (Linux; U; Android 4.0.4; en-us; EVOTAB Build/IMM76I) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		`@see https://github.com/Shaked/gomobiledetect/issues/1 Mozilla/5.0 (Linux; U; Android 4.0.4; en-us; EVOTAB Build/IMM76I) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
 		expectedResult{
 			true,
 			true,
 			nil,
-			``,
+			TEST_SKIPPED,
 		},
 	},
 	{
