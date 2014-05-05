@@ -5299,15 +5299,597 @@ var uaListTests = []struct {
 			``,
 		},
 	},
+	// sony
+	{
+		`SonyEricssonK800i/R1AA Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.1-update1; es-ar; SonyEricssonE15a Build/2.0.1.A.0.47) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.1-update1; pt-br; SonyEricssonU20a Build/2.1.1.A.0.6) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.3; en-au; SonyEricssonX10i Build/3.0.1.G.0.75) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.4; ru-ru; SonyEricssonST18i Build/4.0.2.A.0.62) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.4; hr-hr; SonyEricssonST15i Build/4.0.2.A.0.62) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.4; sk-sk; SonyEricssonLT15i Build/4.0.2.A.0.62) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.7; th-th; SonyEricssonST27i Build/6.0.B.3.184) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.7; de-de; SonyEricssonST25i Build/6.0.B.3.184) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; pt-br; Xperia Tablet S Build/TID0092) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.0.3`,
+				`Build`:   `TID0092`,
+				`Webkit`:  `534.30`,
+				`Safari`:  `4.0`,
+			},
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.3; LT18i Build/4.1.A.0.562) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.3; Sony Tablet S Build/TISU0R0110) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; es-es; Sony Tablet S Build/TISU0143) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; en-gb; SonyEricssonLT18i Build/4.1.B.0.587) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; fr-ch; SonyEricssonSK17i Build/4.1.B.0.587) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; en-us; SonyEricssonLT26i Build/6.1.A.2.45) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.4; LT22i Build/6.1.B.0.544) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; vi-vn; SonyEricssonLT22i Build/6.1.B.0.544) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.4; ST23i Build/11.0.A.5.5) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.4; ST23i Build/11.0.A.2.10) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.4; LT28h Build/6.1.E.3.7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.94 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; en-us; SGPT13 Build/TJDS0170) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.2; ja-jp; SonySO-03E Build/10.1.E.0.265) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.1.2`,
+				`Build`:   `10.1.E.0.265`,
+				`Webkit`:  `534.30`,
+				`Safari`:  `4.0`,
+			},
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.2; LT26w Build/6.2.B.1.96) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.72 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.2.2; SGP321 Build/10.3.1.A.0.33) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.58 Safari/537.31`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.2.2`,
+				`Build`:   `10.3.1.A.0.33`,
+				`Webkit`:  `537.31`,
+				`Chrome`:  `26.0.1410.58`,
+			},
+			``,
+		},
+	},
+	{
+		`SonyEricssonU5i/R2CA; Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Profile/MIDP-2.1 Configuration/CLDC-1.1) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 Safari/525`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`SonyEricssonU5i/R2AA; Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Profile/MIDP-2.1 Configuration/CLDC-1.1) AppleWebKit/525 (KHTML, like Gecko) Version/3.0 Safari/525`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/4.0 (PDA; PalmOS/sony/model prmr/Revision:1.1.54 (en)) NetFront/3.0`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Opera/9.80 (Linux mips; U; InettvBrowser/2.2 (00014A;SonyDTV115;0002;0100) KDL40EX720; CC/BEL; en) Presto/2.7.61 Version/11.00`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Opera/9.80 (Linux armv7l; HbbTV/1.1.1 (; Sony; KDL32W650A; PKG3.211EUA; 2013;); ) Presto/2.12.362 Version/12.11`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	//Skk
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1; en-us; CYCLOPS Build/F10) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//Storex
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.1; eZee_Tab903 Build/JRO03H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.99 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.1.1`,
+				`Build`:   `JRO03H`,
+				`Webkit`:  `537.36`,
+			},
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.1; eZee'Tab785 Build/JRO03C) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.59 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.1.1`,
+				`Build`:   `JRO03C`,
+				`Webkit`:  `537.36`,
+			},
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.3; eZee'Tab971 Build/IML74K) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.0.3`,
+				`Build`:   `IML74K`,
+				`Webkit`:  `535.19`,
+			},
+			``,
+		},
+	},
+	//Tecno
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.2; en-us; TECNO P9 Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//Telstra
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.7; en-au; T-Hub2 Build/TVA301TELBG3) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//texet @info: http://www.texet.ru/tablet/
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.4; ru-ru; TM-7021 Build/GB.m1ref.20120116) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `2.3.4`,
+				`Safari`:  `4.0`,
+				`Webkit`:  `533.1`,
+			},
+			`TM-7021`,
+		},
+	},
+	//Tolino
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.2; de-de; tolino tab 7 Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.2.2`,
+				`Safari`:  `4.0`,
+				`Webkit`:  `534.30`,
+			},
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.2; de-de; tolino tab 8.9 Build/JDQ39) AppleWebKit/534.30 (KHTML like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.2.2`,
+				`Safari`:  `4.0`,
+				`Webkit`:  `534.30`,
+			},
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.2.2; tolino tab 7 Build/JDQ39) AppleWebkit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36 OPR/18.0.1290.67495`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.2; de-de; tolino tab 7 Build/JDQ39) AppleWebkit/537.36 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//Toshiba
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; TOSHIBA; TSUNAGI)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	// @ref: http://www.toshiba.co.uk/discontinued-products/folio-100/
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.2; it-it; TOSHIBA_FOLIO_AND_A Build/TOSHIBA_FOLIO_AND_A) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `2.2`,
+				`Webkit`:  `533.1`,
+				`Safari`:  `4.0`,
+			},
+			``,
+		},
+	},
+	// Trekstor
+	{
+		`Mozilla/5.0 (Linux; Android 4.2.2; ST70408-1 Build/JDQ39) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.58 Safari/537.31`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.2.2`,
+				`Webkit`:  `537.31`,
+				`Build`:   `JDQ39`,
+				`Chrome`:  `26.0.1410.58`,
+			},
+			``,
+		},
+	},
+	// Visture
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.2; en-gb; V97 HD Build/LR-97JC) Apple WebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; en-us; Visture V4 Build/JRO03H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; ru-ru; Visture V4 HD Build/Visture V4 HD) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; es-es; Visture V5 HD Build/Visture V5 HD) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; ru-ru; Visture V10 Build/JRO03H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//Versus
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.4; VS-TOUCHPAD 9 Build/IMM76D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; en-gb; Versus Touchpad 9.7 Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; en-gb; CnM-TOUCHPAD7 Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30 BMID/E67A45B1AB`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; en-gb; CnM TouchPad 7DC Build/JRO03H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30 TwonkyBeamBrowser/3.3.5-95 (Android 4.1.1; rockchip CnM TouchPad 7DC Build/meizhi_V2.80.wifi8723.20121225.b11c800)`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`OneBrowser/3.5/Mozilla/5.0 (Linux; U; Android 4.0.4; en-gb; TOUCHPAD 7 Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; en-gb; TOUCHTAB Build/JRO03H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.1.1`,
+				`Build`:   `JRO03H`,
+				`Webkit`:  `534.30`,
+				`Safari`:  `4.0`,
+			},
+			``,
+		},
+	},
+	//Vodafone
+	{
+		`Mozilla/5.0 (Linux; U; Android 3.2; hu-hu; SmartTab10-MSM8260-V02d-Dec022011-Vodafone-HU) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.3; SmartTabII10 Build/IML74K) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; fr-fr; SmartTAB 1002 Build/JRO03H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+
 	/**
 
-
-
-	  'simvalley' => array(
-
-	      '' => array('isMobile' => true, 'isTablet' => false),
-
-	      ),
 
 	*/
 }
