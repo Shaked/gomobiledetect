@@ -77,7 +77,7 @@ func (md *MobileDetect) IsMobile() bool {
 
 // IsMobile is a specific case to detect only mobile browsers on tablets. Do not overlap with IsMobile
 func (md *MobileDetect) IsTablet() bool {
-	for rule := range md.rules.tabletDevices {
+	for _, rule := range md.rules.tabletDevices {
 		if md.match(rule) {
 			return true
 		}
