@@ -4206,8 +4206,109 @@ var uaListTests = []struct {
 			``,
 		},
 	},
+	//Prestigio
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.2; en-gb; PMP5297C_QUAD Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; sk-sk; PMP7100D3G Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.0.4`,
+				`Build`:   `IMM76D`,
+				`Webkit`:  `534.30`,
+				`Safari`:  `4.0`,
+			},
+			`PMP7100D3G`,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.2; sk-sk; PMP7280C3G Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 MobilSafari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//PROSCAN
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; en-us; PLT8088 Build/JRO03H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.1.1`,
+				`Build`:   `JRO03H`,
+				`Webkit`:  `534.30`,
+				`Safari`:  `4.0`,
+			},
+			``,
+		},
+	},
+	//PyleAudio
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.4; PTBL92BC Build/IMM76D) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.59 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{
+				`Android`: `4.0.4`,
+				`Build`:   `IMM76D`,
+				`Webkit`:  `537.36`,
+				`Chrome`:  `31.0.1650.59`,
+			},
+			``,
+		},
+	},
+	//RockChip
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.2.1; hu-hu; RK2818, Build/MASTER) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android Android 2.1-RK2818-1.0.0; zh-cn; MD701 Build/ECLAIR) AppleWebKit/530.17 (KHTML like Gecko) Version/4.0 Mobile Safari/530.17`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//RossMoor
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.1; ru-ru; RM-790 Build/JOP40D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//QMobile @ref: http://www.qmobile.com.pk/complete_range.php#
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.6; en-us; A2 Build/GRK39F) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
 	/**
-
 
 	*/
 }
