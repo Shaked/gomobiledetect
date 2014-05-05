@@ -6,6 +6,8 @@ import (
 	"testing"
 )
 
+const TEST_SKIPPED = "SKIPPED"
+
 type expectedResult struct {
 	isMobile bool
 	isTablet bool
@@ -5887,16 +5889,1043 @@ var uaListTests = []struct {
 			``,
 		},
 	},
-
-	/**
-
-
-	*/
+	//Vonino
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.2; en-us; Sirius_Evo_QS Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; en-gb; Q8 Build/JRO03H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//ZTE
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.1;zh-cn; ZTE V987 Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30;`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.5; pt-pt; Blade Build/tejosunhsine) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; ZTE; N880e_Dawoer_Fulllock; China Telecom)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; ZTE; V965W)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; ZTE; Windows Phone - Internet 7; SFR)`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	//Zync
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.3; en-us ; Z909 Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1/UCBrowser/8.4.1.204/145/444`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	//Console
+	//Nintendo Wii:
+	{
+		`Mozilla/5.0 (Nintendo WiiU) AppleWebKit/534.52 (KHTML, like Gecko) NX/{Version No} NintendoBrowser/{Version No}.US`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	//Sony PlayStation:
+	{
+		`Mozilla/5.0 (PLAYSTATION 3 4.21) AppleWebKit/531.22.8 (KHTML, like Gecko)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	//Microsoft Xbox:
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0; Xbox)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	// WTF? Must investigate.
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; Xbox)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// Other
+	{
+		`Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/32.0.1700.102 Chrome/32.0.1700.102 Safari/537.36`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Windows NT 6.1; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Windows NT 6.1; WOW64; rv:18.0) Gecko/20100101 Firefox/18.0 AlexaToolbar/psPCtGhf-2.2`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:22.0) Gecko/20100101 Firefox/22.0`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (X11; Linux ppc; rv:17.0) Gecko/20130626 Firefox/17.0 Iceweasel/17.0.7`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (X11; Linux) AppleWebKit/535.22+ Midori/0.4`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-us) AppleWebKit/535+ (KHTML, like Gecko) Version/5.0 Safari/535.20+ Midori/0.4`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.20 Safari/537.36  OPR/15.0.1147.18 (Edition Next)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.94 Safari/537.36`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Windows NT 5.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.94 Safari/537.36`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Windows NT 5.2; WOW64; rv:21.0) Gecko/20100101 Firefox/21.0`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Opera/9.80 (Windows NT 5.2; WOW64) Presto/2.12.388 Version/12.14`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Windows NT 6.1; WOW64; rv:19.0) Gecko/20100101 Firefox/19.0`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (X11; FreeBSD amd64; rv:14.0) Gecko/20100101 Firefox/14.0.1`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/6.0; Touch; .NET4.0E; .NET4.0C; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET CLR 2.0.50727; Tablet PC 2.0; MASMJS)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Win64; x64; Trident/6.0; MASMJS)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0; Touch; MASMJS)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Opera/9.80 (Windows NT 6.2; WOW64; MRA 8.0 (build 5784)) Presto/2.12.388 Version/12.11`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	// IE 10
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	// IE 11 @todo: Trident(.*)rv.(\d+)\.(\d+)
+	{
+		`Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv 11.0) like Gecko`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; Touch; rv:11.0) like Gecko`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	// TV
+	{
+		`Mozilla/5.0 (Unknown; Linux armv7l) AppleWebKit/537.1+ (KHTML, like Gecko) Safari/537.1+ HbbTV/1.1.1 ( ;LGE ;NetCast 4.0 ;03.20.30 ;1.0M ;)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`HbbTV/1.1.1 (;Panasonic;VIERA 2012;1.261;0071-3103 2000-0000;)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Opera/9.80 (Linux armv7l; HbbTV/1.1.1 (; Sony; KDL32W650A; PKG3.211EUA; 2013;); ) Presto/2.12.362 Version/12.11`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	//Generic
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.3; ALUMIUM10 Build/IML74K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.99 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.1; en-us; JY-G3 Build/JOP40D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; hu-hu; M758A Build/JRO03C) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; en-us; EVOTAB Build/IMM76I) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Opera/9.80 (Series 60; Opera Mini/6.5.29260/29.3417; U; ru) Presto/2.8.119 Version/11.10`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Opera/9.80 (Android; Opera Mini/6.5.27452/29.3417; U; ru) Presto/2.8.119 Version/11.10`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	// New Opera
+	{
+		`Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.60 Safari/537.17 OPR/14.0.1025.52315`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	// Unknown yet
+	// Looks like Chromebook
+	{
+		`Mozilla/5.0 (X11; CrOS armv7l 4920.83.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.103 Safari/537.36`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_2 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8H7 Safari/6533.18.5`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.2; fr-fr; GT-I9070 Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Opera/9.80 (Android 2.3.7; Linux; Opera Mobi/46154) Presto/2.11.355 Version/12.10`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; it-it; DATAM819HD_C Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; nl-nl; SGPT12 Build/TID0142) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; en-us; cm_tenderloin Build/IMM76L; CyanogenMod-9) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// Acer Iconia Tab
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; fr-fr; A210 Build/JRO03H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (iPad; CPU OS 6_1 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10B141 Safari/8536.25`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.6; en-gb; GT-I8150 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// Mercurio Browser
+	{
+		`Mozilla/5.0 (iPad; CPU OS 6_0_1 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Mercury/7.2 Mobile/10A523 Safari/8536.25`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Opera/9.80 (Android 2.3.7; Linux; Opera Tablet/46154) Presto/2.11.355 Version/12.10`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// sdk
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.2; en-us; sdk Build/MASTER) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// sdk
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2; en-us; sdk Build/JB_MR1) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; en-us; GT-P7510 Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Opera/9.80 (X11; Linux zbov) Presto/2.11.355 Version/12.10`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// 7" Verso Android tablet
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; en-gb; TOUCHPAD 7 Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (iPhone; U; CPU OS 4_2_1 like Mac OS X) AppleWebKit/532.9 (KHTML, like Gecko) Version/5.0.3 Mobile/8B5097d Safari/6531.22.7`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// sony xperia tablet s unforts
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; en-gb; SGPT12 Build/TID0142) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Nintendo 3DS; U; ; en) Version/1.7498.US`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// PocketBook IQ701 (tablet)
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.0.6_b1; ru-ru Build/ECLAIR) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// It is a tablet with calling
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.4; z1000 Build/IMM76D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// HP touch pad running android cyanogenmod
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.3; cm_tenderloin Build/GWK74) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// My device is tablet but its detected as phone
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.3; en-us; Android for Techvision TV1T808 Board Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`BlackBerry8520/5.0.0.592 Profile/MIDP-2.1 Configuration/CLDC-1.1 VendorID/136`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// its a lenovo tablet 2 with windows 8 pro
+	{
+		`Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.56 Safari/537.17`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 3.1; ru-ru; LG-V900 Build/HMJ37) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; HTC; Windows Phone 8S by HTC)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// MS Surface RT tablet actually!
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0; Touch)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (PLAYSTATION 3 4.11) AppleWebKit/531.22.8 (KHTML, like Gecko)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// Wrong detection - 7-inch tablet was detected as a phone. Android 3.2.1, native browser
+	{
+		`Mozilla/5.0 (Linux; U; Android 3.2; ru-ru; V9S_V1.4) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// Nope, its a Microsoft Surface tablet	 running Windows RT (8) with MSIE 10
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0; Touch)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// Tablet!
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.2; es-es; Broncho N701 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// its a Microsoft surface rt (tablet)
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0; Touch)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0; Touch; WebView/1.0)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// Nextbook 7SE Tablet
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; en-us; Next7P12 Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// allview alldro speed tablet, android ics, opera mobile
+	{
+		`Opera/9.80 (X11; Linux zbov) Presto/2.11.355 Version/12.10`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// Its a surface in portrait
+	{
+		`Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; ARM; Trident/6.0; Touch)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 2.3.6; es-es; SAMSUNG GT-S5830/S5830BUKT2 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 3.2.1; en-gb;HTC_Flyer_P512 Build/HTK75C) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// Am ramas la pozitia: 207
+	// Android on Windows :) www.socketeq.com
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; en-us; full Android on Microsoft Windows, pad, pc, n*books Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// TV
+	{
+		`Opera/9.80 (Linux mips; U; InettvBrowser/2.2 (00014A;SonyDTV115;0002;0100) KDL40EX720; CC/BEL; en) Presto/2.7.61 Version/11.00`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Android; Mobile; rv:18.0) Gecko/18.0 Firefox/18.0`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// Maxthon
+	{
+		`Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.12 (KHTML, like Gecko) Maxthon/3.0 Chrome/18.0.966.0 Safari/535.12`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Opera/9.80 (Windows NT 5.1; U; Edition Yx; ru) Presto/2.10.289 Version/12.02`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2; en-us; sdk Build/JB_MR1) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; Windows Phone 6.5.3.5)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`PalmCentro/v0001 Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; PalmSource/Palm-D061; Blazer/4.5) 16;320x320`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; Microsoft; XDeviceEmulator)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	// @todo: research N880E
+	{
+		`Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; MAL; N880E; China Telecom)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Opera/9.80 (Series 60; Opera Mini/7.0.29482/28.2859; U; ru) Presto/2.8.119 Version/11.10`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Opera/9.80 (S60; SymbOS; Opera Mobi/SYB-1202242143; U; en-GB) Presto/2.10.254 Version/12.00`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; en-au; 97D Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Opera/9.80 (Android; Opera Mini/7.0.29952/28.2647; U; ru) Presto/2.8.119 Version/11.10`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Opera/9.80 (Android; Opera Mini/6.1.25375/28.2555; U; en) Presto/2.8.119 Version/11.10`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Opera/9.80 (Mac OS X; Opera Tablet/35779; U; en) Presto/2.10.254 Version/12.00`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Android; Tablet; rv:10.0.4) Gecko/10.0.4 Firefox/10.0.4 Fennec/10.0.4`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Android; Tablet; rv:18.0) Gecko/18.0 Firefox/18.0`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Opera/9.80 (Linux armv7l; Maemo; Opera Mobi/14; U; en) Presto/2.9.201 Version/11.50`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Opera/9.80 (Android 2.2.1; Linux; Opera Mobi/ADR-1207201819; U; en) Presto/2.10.254 Version/12.00`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; en-us; sdk Build/JRO03E) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	//Bot
+	{
+		`Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`grub-client-1.5.3; (grub-client-1.5.3; Crawl your own stuff with http://grub.org)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Googlebot-Image/1.0`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Python-urllib/2.5`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`facebookexternalhit/1.0 (+http://www.facebook.com/externalhit_uatext.php)`,
+		expectedResult{
+			false,
+			false,
+			nil,
+			``,
+		},
+	},
 }
 
 type uaListResult struct {
 	success bool
 	message string
+	skipped bool
 }
 
 func TestUaList(t *testing.T) {
@@ -5908,26 +6937,34 @@ func TestUaList(t *testing.T) {
 			result := &uaListResult{
 				true,
 				"",
+				false,
 			}
-			detect := NewMobileDetect(httpRequest, nil)
-			detect.SetUserAgent(userAgent)
-			isMobile := detect.IsMobile()
 
-			if er.isMobile != isMobile {
+			if TEST_SKIPPED == er.model {
 				result.success = false
-				result.message += fmt.Sprintf("%d: For userAgent %s\n expected result is mobile: %s got %s\n", idx, userAgent, er.isMobile, isMobile)
-			}
+				result.message = userAgent
+				result.skipped = true
+			} else {
+				detect := NewMobileDetect(httpRequest, nil)
+				detect.SetUserAgent(userAgent)
+				isMobile := detect.IsMobile()
 
-			isTablet := detect.IsTablet()
-			if er.isTablet != isTablet {
-				result.success = false
-				result.message += fmt.Sprintf("%d: For userAgent %s\n expected result is tablet: %s got %s\n", idx, userAgent, er.isTablet, isTablet)
-			}
+				if er.isMobile != isMobile {
+					result.success = false
+					result.message += fmt.Sprintf("%d: For userAgent %s\n expected result is mobile: %s got %s\n", idx, userAgent, er.isMobile, isMobile)
+				}
 
-			for name, v := range er.version {
-				actualVersion := detect.Version(name)
-				if v != actualVersion {
-					t.Errorf("expected version: %s, actual version: %s", v, actualVersion)
+				isTablet := detect.IsTablet()
+				if er.isTablet != isTablet {
+					result.success = false
+					result.message += fmt.Sprintf("%d: For userAgent %s\n expected result is tablet: %s got %s\n", idx, userAgent, er.isTablet, isTablet)
+				}
+
+				for name, v := range er.version {
+					actualVersion := detect.Version(name)
+					if v != actualVersion {
+						t.Errorf("expected version: %s, actual version: %s", v, actualVersion)
+					}
 				}
 			}
 
@@ -5936,9 +6973,17 @@ func TestUaList(t *testing.T) {
 	}
 	for i := 0; i < len(uaListTests); i++ {
 		result := <-chn
+
 		if false == result.success {
-			t.Error(result.message)
+			if result.skipped {
+				go func(t *testing.T) {
+					t.Skipf("Skipped: %s", result.message)
+				}(t)
+			} else {
+				t.Error(result.message)
+			}
 		}
+
 		if result.success && "done" == result.message {
 			break
 		}
