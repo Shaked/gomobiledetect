@@ -183,7 +183,6 @@ func QuickHeadersData() []map[string]string {
 		map[string]string{`HTTP_WAP_CONNECTION`: ``},
 		map[string]string{`HTTP_PROFILE`: ``},
 		map[string]string{`HTTP_X_OPERAMINI_PHONE_UA`: ``},
-		map[string]string{`HTTP_X_NOKIA_IPADDRESS`: ``},
 		map[string]string{`HTTP_X_NOKIA_GATEWAY_ID`: ``},
 		map[string]string{`HTTP_X_ORANGE_ID`: ``},
 		map[string]string{`HTTP_X_VODAFONE_3GPDPCONTEXT`: ``},

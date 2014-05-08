@@ -214,7 +214,6 @@ func (md *MobileDetect) getMobileHeaders() []string {
 		"HTTP_PROFILE",
 		// Reported by Opera on Nokia devices (eg. C3).
 		"HTTP_X_OPERAMINI_PHONE_UA",
-		"HTTP_X_NOKIA_IPADDRESS",
 		"HTTP_X_NOKIA_GATEWAY_ID",
 		"HTTP_X_ORANGE_ID",
 		"HTTP_X_VODAFONE_3GPDPCONTEXT",
@@ -324,7 +323,7 @@ func (md *MobileDetect) MobileGrade() string {
 }
 
 func (md *MobileDetect) isMobileGradeA(isMobile bool) bool {
-	if md.VersionFloat("iPad") >= 4.3 || md.VersionFloat("iPhone") >= 4.0 || md.VersionFloat("iPod") >= 4.0 ||
+	if md.VersionFloat("iPad") >= 4.3 || md.VersionFloat("iPhone") >= 3.1 || md.VersionFloat("iPod") >= 3.1 ||
 		(md.VersionFloat("Android") > 2.1 && md.Is("Webkit")) ||
 		md.VersionFloat("Windows Phone OS") >= 7.0 ||
 		md.Is("BlackBerry") && md.VersionFloat("BlackBerry") >= 6.0 ||

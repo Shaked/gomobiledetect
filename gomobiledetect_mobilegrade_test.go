@@ -1054,6 +1054,7 @@ var mobileGradeTests = []struct {
 	{"Wotbox/2.01 ( http://www.wotbox.com/bot/)", MOBILE_GRADE_C},
 	{"Xenu Link Sleuth/1.3.8", MOBILE_GRADE_C},
 	{"Xenu Link Sleuth/1.3.9 beta", MOBILE_GRADE_C},
+	{"NOKIAN78/UCWEB 8.6.0.180/28/999", MOBILE_GRADE_C},
 }
 
 type mobileGradeTestResult struct {
