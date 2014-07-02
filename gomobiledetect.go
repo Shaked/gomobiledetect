@@ -23,6 +23,7 @@ type MobileDetect struct {
 	userAgent            string
 	httpHeaders          map[string]string
 	mobileDetectionRules map[string]string
+	compiledRegexRules   map[string]*regexp.Regexp
 }
 
 // NewMobileDetect creates the MobileDetect object
@@ -30,7 +31,12 @@ func NewMobileDetect(r *http.Request, rules *rules) *MobileDetect {
 	if nil == rules {
 		rules = NewRules()
 	}
-	md := &MobileDetect{rules: rules, userAgent: r.UserAgent(), httpHeaders: getHttpHeaders(r)}
+	md := &MobileDetect{
+		rules:              rules,
+		userAgent:          r.UserAgent(),
+		httpHeaders:        getHttpHeaders(r),
+		compiledRegexRules: make(map[string]*regexp.Regexp),
+	}
 	return md
 }
 
@@ -55,6 +61,13 @@ func getHttpHeaders(r *http.Request) map[string]string {
 	}
 
 	return httpHeaders
+}
+
+func (md *MobileDetect) PreCompileRegexRules() *MobileDetect {
+	for _, ruleValue := range md.rules.getMobileDetectionRules() {
+		md.match(ruleValue)
+	}
+	return md
 }
 
 func (md *MobileDetect) SetUserAgent(userAgent string) *MobileDetect {
@@ -180,7 +193,10 @@ func (md *MobileDetect) match(rule string) bool {
 	//Escape the special character which is the delimiter
 	//rule = strings.Replace(rule, `\`, `\/`, -1)
 	rule = `(?is)` + rule
-	re := regexp.MustCompile(rule)
+	if _, ok := md.compiledRegexRules[rule]; !ok {
+		md.compiledRegexRules[rule] = regexp.MustCompile(rule)
+	}
+	re := md.compiledRegexRules[rule]
 	ret := re.MatchString(md.userAgent)
 	return ret
 }

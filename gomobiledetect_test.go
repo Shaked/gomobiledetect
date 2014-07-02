@@ -2,6 +2,7 @@ package gomobiledetect
 
 import (
 	"net/http"
+	"strings"
 	"testing"
 )
 
@@ -300,5 +301,24 @@ func TestVersionExtraction(t *testing.T) {
 		if floatVersion != detectedVersionFloat {
 			t.Errorf("Float version %d is mismatched (detectedVersion %d, property %s)", floatVersion, detectedVersionFloat, property)
 		}
+	}
+}
+
+func TestPreCompileRegexRules(t *testing.T) {
+	detect := NewMobileDetect(httpRequest, nil)
+	detect.PreCompileRegexRules()
+	e := len(detect.rules.getMobileDetectionRules())
+	c := len(detect.compiledRegexRules)
+	if c != e {
+		t.Errorf("Compiled rules are not being cached.\n Rules: %d\n Cached: %d\n", e, c)
+	}
+}
+
+func BenchmarkMatch(b *testing.B) {
+	req, _ := http.NewRequest("GET", "URL", strings.NewReader(""))
+	detect := NewMobileDetect(req, nil)
+	detect.SetUserAgent(`Mozilla/5.0 (BlackBerry; U; BlackBerry 9700; en-US) AppleWebKit/534.8  (KHTML, like Gecko) Version/6.0.0.448 Mobile Safari/534.8`)
+	for n := 0; n < b.N; n++ {
+		detect.IsMobile()
 	}
 }
