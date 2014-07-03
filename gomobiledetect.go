@@ -35,7 +35,7 @@ func NewMobileDetect(r *http.Request, rules *rules) *MobileDetect {
 		rules:              rules,
 		userAgent:          r.UserAgent(),
 		httpHeaders:        getHttpHeaders(r),
-		compiledRegexRules: make(map[string]*regexp.Regexp),
+		compiledRegexRules: make(map[string]*regexp.Regexp, len(rules.MobileDetectionRules())),
 	}
 	return md
 }
@@ -64,7 +64,7 @@ func getHttpHeaders(r *http.Request) map[string]string {
 }
 
 func (md *MobileDetect) PreCompileRegexRules() *MobileDetect {
-	for _, ruleValue := range md.rules.getMobileDetectionRules() {
+	for _, ruleValue := range md.rules.MobileDetectionRules() {
 		md.match(ruleValue)
 	}
 	return md
@@ -90,8 +90,8 @@ func (md *MobileDetect) IsMobile() bool {
 
 // IsMobile is a specific case to detect only mobile browsers on tablets. Do not overlap with IsMobile
 func (md *MobileDetect) IsTablet() bool {
-	for _, rule := range md.rules.tabletDevices {
-		if md.match(rule) {
+	for _, ruleValue := range md.rules.tabletDevices {
+		if md.match(ruleValue) {
 			return true
 		}
 	}
@@ -155,26 +155,27 @@ func (md *MobileDetect) VersionFloat(propertyName string) float64 {
 
 //Search for a certain key in the rules array.
 //If the key is found the try to match the corresponding regex agains the User-Agent.
-func (md *MobileDetect) matchUAAgainstKey(key string) bool {
+func (md *MobileDetect) matchUAAgainstKey(name string) bool {
 	// Make the keys lowercase so we can match: isIphone(), isiPhone(), isiphone(), etc.
-	key = strings.ToLower(key)
-
+	// key, err := md.rules.nameToKey(strings.ToLower(name))
+	// if nil != err {
+	// 	log.Println("KEY", key, err)
+	// 	return false
+	// }
 	//change the keys to lower case
-	rules := make(map[string]string)
-	for ruleKey, ruleValue := range md.rules.getMobileDetectionRules() {
-		ruleKey = strings.ToLower(ruleKey)
-		rules[ruleKey] = ruleValue
+	rules := md.rules.MobileDetectionRules()
+	for ruleKey, ruleValue := range rules {
+		if name == ruleKey {
+			return md.match(ruleValue)
+		}
 	}
 
-	if rule, ok := rules[key]; ok && "" != rule {
-		return md.match(rule)
-	}
 	return false
 }
 
 //Find a detection rule that matches the current User-agent.
 func (md *MobileDetect) matchDetectionRulesAgainstUA() bool {
-	for _, ruleValue := range md.rules.getMobileDetectionRules() {
+	for _, ruleValue := range md.rules.MobileDetectionRules() {
 		if "" != ruleValue {
 			if md.match(ruleValue) {
 				return true
@@ -189,14 +190,16 @@ func (md *MobileDetect) matchDetectionRulesAgainstUA() bool {
 // their conventions in representing the User-Agent or the HTTP headers.
 // This method will be used to check custom regexes against the User-Agent string.
 // @todo: search in the HTTP headers too.
-func (md *MobileDetect) match(rule string) bool {
+func (md *MobileDetect) match(ruleValue string) bool {
 	//Escape the special character which is the delimiter
 	//rule = strings.Replace(rule, `\`, `\/`, -1)
-	rule = `(?is)` + rule
-	if _, ok := md.compiledRegexRules[rule]; !ok {
-		md.compiledRegexRules[rule] = regexp.MustCompile(rule)
+	ruleValue = `(?is)` + ruleValue
+	var re *regexp.Regexp
+	re = md.compiledRegexRules[ruleValue]
+	if nil == re {
+		md.compiledRegexRules[ruleValue] = regexp.MustCompile(ruleValue)
 	}
-	re := md.compiledRegexRules[rule]
+	re = md.compiledRegexRules[ruleValue]
 	ret := re.MatchString(md.userAgent)
 	return ret
 }

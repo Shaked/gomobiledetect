@@ -198,6 +198,7 @@ func QuickHeadersData() []map[string]string {
 
 func TestQuickHeaders(t *testing.T) {
 	detect := NewMobileDetect(httpRequest, nil)
+	detect.PreCompileRegexRules()
 	for _, httpHeaders := range QuickHeadersData() {
 		detect.SetHttpHeaders(httpHeaders)
 		if true != detect.CheckHttpHeadersForMobile() {
@@ -307,7 +308,7 @@ func TestVersionExtraction(t *testing.T) {
 func TestPreCompileRegexRules(t *testing.T) {
 	detect := NewMobileDetect(httpRequest, nil)
 	detect.PreCompileRegexRules()
-	e := len(detect.rules.getMobileDetectionRules())
+	e := len(detect.rules.MobileDetectionRules())
 	c := len(detect.compiledRegexRules)
 	if c != e {
 		t.Errorf("Compiled rules are not being cached.\n Rules: %d\n Cached: %d\n", e, c)
