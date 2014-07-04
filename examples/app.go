@@ -14,6 +14,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "isMobile?", detect.IsMobile())
 	fmt.Fprintln(w, "isTablet?", detect.IsTablet())
 	fmt.Fprintln(w, "is(request)?", requestValue, " ", detect.Is(requestValue))
+	fmt.Fprintln(w, "isKey(request)?", requestValue, " ", detect.IsKey(gomobiledetect.IPHONE))
 	fmt.Fprintln(w, "Version: ", detect.Version(requestValue))
 }
 
