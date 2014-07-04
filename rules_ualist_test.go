@@ -1465,6 +1465,24 @@ var uaListTests = []struct {
 		},
 	},
 	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; en-us; Google Nexus 4 - 4.1.1 - API 16 - 768x1280 Build/JRO03S) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; en-us; Google Galaxy Nexus - 4.1.1 - API 16 - 720x1280 Build/JRO03S) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
 		`@see https://github.com/Shaked/gomobiledetect/issues/1 Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19`,
 		expectedResult{
 			true,
@@ -1505,6 +1523,15 @@ var uaListTests = []struct {
 	},
 	{
 		`@see https://github.com/Shaked/gomobiledetect/issues/1 Mozilla/5.0 (Linux; Android 4.3; Nexus 10 Build/JWR66Y) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.72 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			TEST_SKIPPED,
+		},
+	},
+	{
+		`@see https://github.com/Shaked/gomobiledetect/issues/1 Mozilla/5.0 (Linux; U; Android; en_us; Nexus 7 Build/) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 NetFrontLifeBrowser/2.3 Mobile (Dragonfruit)`,
 		expectedResult{
 			true,
 			true,
@@ -2750,6 +2777,168 @@ var uaListTests = []struct {
 	},
 	{
 		`Mozilla/5.0 (Linux; U; Android 4.0.3; en-au; ThinkPad Tablet Build/ThinkPadTablet_A400_03) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`UCWEB/2.0 (Linux; U; Opera Mini/7.1.32052/30.3697; en-US; IdeaTabA1000-G) U2/1.0.0 UCBrowser/9.2.0.419 Mobile`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.2; IdeaTabA1000-F Build/JZO54K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`UCWEB/2.0 (Linux; U; Opera Mini/7.1.32052/30.3697; en-US; IdeaTabA1000-G) U2/1.0.0 UCBrowser/9.2.0.419 Mobile`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.2.1; Lenovo A3000-H Build/JOP40D) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.117 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.2.2; IdeaTab A3000-F Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.99 Safari/537.360`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1; zh-cn; Lenovo-A3000-H/S100) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.1 Mobile Safari/534.300`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.2; es-us; IdeaTab A3000-F Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.0.3; IdeaTab A2107A-H Build/IML74K) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.3; de-de; IdeaTab A2107A-H Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; es-es; IdeaTabA2109A Build/JRO03R) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; nl-nl; IdeaTabA2109A Build/JRO03R) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.0.4; es-es; IdeaTab_A1107 Build/MR1) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.300`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.2.2; IdeaTab S6000-H Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.138 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.2; en-gb; IdeaTab S6000-F Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.2.2; Lenovo B8000-F Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.2;it-it; Lenovo B8000-F/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.2.2 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.2; it-it; Lenovo B6000-F/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.2.2 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.2.2; Lenovo B6000-F Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Safari/537.36`,
 		expectedResult{
 			true,
 			true,
@@ -4978,12 +5167,12 @@ var uaListTests = []struct {
 	},
 	{
 		//@see rules.go:35
-		`@see https://github.com/Shaked/gomobiledetect/issues/1 Mozilla/5.0 (Linux; U; Android 4.1.1; en-gb; Galaxy Nexus - 4.1.1 - with Google Apps - API 16 - 720x1280 Build/JRO03S) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		`Mozilla/5.0 (Linux; U; Android 4.1.1; en-gb; Galaxy Nexus - 4.1.1 - with Google Apps - API 16 - 720x1280 Build/JRO03S) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
 		expectedResult{
 			true,
-			true,
+			false,
 			nil,
-			TEST_SKIPPED,
+			``,
 		},
 	},
 	{
@@ -5087,6 +5276,15 @@ var uaListTests = []struct {
 	},
 	{
 		`Mozilla/5.0 (Linux; U; Android 4.2.2; en-gb; GT-N5100 Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.4.2; en-us; SAMSUNG SM-T530NU Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/1.5 Chrome/28.0.1500.94 Safari/537.36`,
 		expectedResult{
 			true,
 			true,
@@ -5540,6 +5738,411 @@ var uaListTests = []struct {
 				`Webkit`:  `537.31`,
 				`Chrome`:  `26.0.1410.58`,
 			},
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.3; zh-cn; XL39h Build/14.2.A.1.136) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.2; sv-se; C5503 Build/10.1.1.A.1.273) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.2; en-us; C5502 Build/10.1.1.A.1.310) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.2; zh-cn; SonyL39t Build/14.1.M.0.202) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.2; zh-cn; L39u Build/14.1.n.0.63) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.2; zh-tw; M35c Build/12.0.B.5.37) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.2; M35c Build/12.0.B.2.42) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.90 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.2; zh-CN; M35t Build/12.0.C.2.42) AppleWebKit/534.31 (KHTML, like Gecko) UCBrowser/9.3.2.349 U3/0.8.0 Mobile Safari/534.31`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.4.2; D6502 Build/17.1.A.2.69) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.4.2; D6503 Build/17.1.A.0.504) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.99 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.4.2; D6543 Build/17.1.A.2.55) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.3; D2004 Build/20.0.A.0.29) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.94 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.3; en-gb; D2005 Build/20.0.A.1.12) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.3; D2104 Build/20.0.B.0.84) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.3; D2105 Build/20.0.B.0.74) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.170 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.3; pt-br; D2114 Build/20.0.B.0.85) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.3; D2302 Build/18.0.B.1.23) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.138 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.3; zh-cn; S50h Build/18.0.b.1.23) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.6.3.413 U3/0.8.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.3; D2303 Build/18.0.C.1.13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.138 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.3; D2305 Build/18.0.A.1.30) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.138 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.3; D2306 Build/18.0.C.1.7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.136 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.3; D5303 Build/19.0.1.A.0.207) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.4.2; D5306 Build/19.1.A.0.264) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.136 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.3; zh-CN; XM50h Build/19.0.D.0.269) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 UCBrowser/9.7.6.428 U3/0.8.0 Mobile Safari/533.1`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.3; zh-cn; XM50t Build/19.0.C.2.59) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.3; D5322 Build/19.0.D.0.253) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.3; zh-cn; M51w Build/14.2.A.1.146) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.3; M51w Build/14.2.A.1.146) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.136 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.4.1; D5102 Build/18.2.A.0.9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.99 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.4.1; D5103 Build/18.1.A.0.11) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.92 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.4.1; D5106 Build/18.1.A.0.11) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.99 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.3; en-gb; C6902 Build/14.2.A.1.136) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 GSA/3.2.17.1009776.arm`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.2.2; es-es; C6943 Build/14.1.G.2.257) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.4.2; C6943 Build/14.3.A.0.681) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.99 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.2.2; SGP412 Build/14.1.B.3.320) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Mobile Safari/537.36`,
+		expectedResult{
+			true,
+			false,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1; en-us; SonySGP321 Build/10.2.C.0.143) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.1.2; SGP351 Build/10.1.1.A.1.307) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Safari/535.19`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.3; SGP341 Build/10.4.B.0.569) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.99 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.4.2; SGP511 Build/17.1.A.2.36) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.122 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.4.2; SGP512 Build/17.1.A.2.36) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.122 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.2; fr-ch; SGP311 Build/10.1.C.0.344) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.1.2; en-us; SGP312 Build/10.1.C.0.344) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.4.2; de-de; SGP521 Build/17.1.A.2.69) AppleWebKit/537.16 (KHTML, like Gecko) Version/4.0 Safari/537.16`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; U; Android 4.4.2; zh-cn; SGP541 Build/17.1.A.2.36) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
+	{
+		`Mozilla/5.0 (Linux; Android 4.4.2; SGP551 Build/17.1.A.2.72) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			nil,
 			``,
 		},
 	},
