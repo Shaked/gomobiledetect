@@ -14,5 +14,10 @@ cover: packages
 	gocov test . -v >> cover.json; 
 	gocov-html cover.json >> cover.html; 
 
+travis: cover
+	$(HOME)/gopath/bin/gover 
+	$(HOME)/gopath/bin/goveralls -repotoken Rcel00b0hm7Bd3oy5x2XQvhVNY0Eckbry -coverprofile=gover.coverprofile -service travis-ci
+
+
 doc:
 	godoc . 1> manual.txt
