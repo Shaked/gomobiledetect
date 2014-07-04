@@ -123,7 +123,7 @@ func (md *MobileDetect) Is(key interface{}) bool {
 // Version detects the browser version returning as string
 func (md *MobileDetect) Version(propertyName string) string {
 	if "" != propertyName {
-		properties := md.Properties()
+		properties := md.properties()
 
 		if _, ok := properties[propertyName]; ok {
 			for _, propertyMatchString := range properties[propertyName] {
@@ -276,7 +276,7 @@ func (md *MobileDetect) mobileHeaderMatches() map[string][]string {
 
 // Properties helps parsing User Agent string, extracting useful segments of text.
 //VER refers to the regular expression defined in the constant self::VER.
-func (md *MobileDetect) Properties() map[string][]string {
+func (md *MobileDetect) properties() map[string][]string {
 	return map[string][]string{
 
 		// Build
