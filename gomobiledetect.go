@@ -35,7 +35,7 @@ func NewMobileDetect(r *http.Request, rules *rules) *MobileDetect {
 		rules:              rules,
 		userAgent:          r.UserAgent(),
 		httpHeaders:        getHttpHeaders(r),
-		compiledRegexRules: make(map[string]*regexp.Regexp, len(rules.MobileDetectionRules())),
+		compiledRegexRules: make(map[string]*regexp.Regexp, len(rules.mobileDetectionRules())),
 	}
 	return md
 }
@@ -64,7 +64,7 @@ func getHttpHeaders(r *http.Request) map[string]string {
 }
 
 func (md *MobileDetect) PreCompileRegexRules() *MobileDetect {
-	for _, ruleValue := range md.rules.MobileDetectionRules() {
+	for _, ruleValue := range md.rules.mobileDetectionRules() {
 		md.match(ruleValue)
 	}
 	return md
@@ -98,9 +98,26 @@ func (md *MobileDetect) IsTablet() bool {
 	return false
 }
 
-// Is compared the detected browser with a "rule"
-func (md *MobileDetect) Is(key string) bool {
+// Is compared the detected browser with a "rule" from the existing rules list
+func (md *MobileDetect) IsKey(key int) bool {
 	return md.matchUAAgainstKey(key)
+}
+
+// Deprecated, Is compared the detected browser with a "rule"
+func (md *MobileDetect) Is(key interface{}) bool {
+	switch key.(type) {
+	case string:
+		name := strings.ToLower(key.(string))
+		ruleKey, ok := md.rules.nameToKey(name)
+		if !ok {
+			return false
+		}
+		return md.matchUAAgainstKey(ruleKey)
+	case int:
+		ruleKey := key.(int)
+		return md.IsKey(ruleKey)
+	}
+	return false
 }
 
 // Version detects the browser version returning as string
@@ -155,27 +172,22 @@ func (md *MobileDetect) VersionFloat(propertyName string) float64 {
 
 //Search for a certain key in the rules array.
 //If the key is found the try to match the corresponding regex agains the User-Agent.
-func (md *MobileDetect) matchUAAgainstKey(name string) bool {
-	// Make the keys lowercase so we can match: isIphone(), isiPhone(), isiphone(), etc.
-	// key, err := md.rules.nameToKey(strings.ToLower(name))
-	// if nil != err {
-	// 	log.Println("KEY", key, err)
-	// 	return false
-	// }
-	//change the keys to lower case
-	rules := md.rules.MobileDetectionRules()
+func (md *MobileDetect) matchUAAgainstKey(key int) bool {
+	ret := false
+	rules := md.rules.mobileDetectionRules()
 	for ruleKey, ruleValue := range rules {
-		if name == ruleKey {
-			return md.match(ruleValue)
+		if key == ruleKey {
+			ret = md.match(ruleValue)
+			break
 		}
 	}
 
-	return false
+	return ret
 }
 
 //Find a detection rule that matches the current User-agent.
 func (md *MobileDetect) matchDetectionRulesAgainstUA() bool {
-	for _, ruleValue := range md.rules.MobileDetectionRules() {
+	for _, ruleValue := range md.rules.mobileDetectionRules() {
 		if "" != ruleValue {
 			if md.match(ruleValue) {
 				return true
@@ -206,9 +218,9 @@ func (md *MobileDetect) match(ruleValue string) bool {
 
 // CheckHttpHeadersForMobile looks for mobile rules to confirm if the browser is a mobile browser
 func (md *MobileDetect) CheckHttpHeadersForMobile() bool {
-	for _, mobileHeader := range md.getMobileHeaders() {
+	for _, mobileHeader := range md.mobileHeaders() {
 		if headerString, ok := md.httpHeaders[mobileHeader]; ok {
-			mobileHeaderMatches := md.getMobileHeaderMatches()
+			mobileHeaderMatches := md.mobileHeaderMatches()
 			if matches, ok := mobileHeaderMatches[mobileHeader]; ok {
 				for _, match := range matches {
 					if -1 != strings.Index(headerString, match) {
@@ -224,7 +236,7 @@ func (md *MobileDetect) CheckHttpHeadersForMobile() bool {
 	return false
 }
 
-func (md *MobileDetect) getMobileHeaders() []string {
+func (md *MobileDetect) mobileHeaders() []string {
 	return []string{
 		"HTTP_ACCEPT",
 		"HTTP_X_WAP_PROFILE",
@@ -248,7 +260,7 @@ func (md *MobileDetect) getMobileHeaders() []string {
 	}
 }
 
-func (md *MobileDetect) getMobileHeaderMatches() map[string][]string {
+func (md *MobileDetect) mobileHeaderMatches() map[string][]string {
 	return map[string][]string{
 		"HTTP_ACCEPT": []string{
 			// Opera Mini; @reference: http://dev.opera.com/articles/view/opera-binary-markup-language/

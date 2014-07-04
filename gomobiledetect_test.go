@@ -19,6 +19,7 @@ type basicMethodsStruct struct {
 
 type basicMethodsStructCustomValue struct {
 	name  string
+	key   int
 	value bool
 }
 
@@ -135,6 +136,43 @@ func BasicMethodsData() []basicMethodsStruct {
 				},
 			},
 		},
+		basicMethodsStruct{
+			httpHeaders: map[string]string{
+				"SERVER_SOFTWARE":       "Apache/2.2.15 (Linux) Whatever/4.0 PHP/5.2.13",
+				"REQUEST_METHOD":        "POST",
+				"HTTP_HOST":             "",
+				"HTTP_X_REAL_IP":        "1.2.3.4",
+				"HTTP_X_FORWARDED_FOR":  "1.2.3.5",
+				"HTTP_CONNECTION":       "close",
+				"HTTP_USER_AGENT":       "Mozilla/5.0 (iPad; CPU OS 5_1_1 like Mac OS X; en-us) AppleWebKit/534.46.0 (KHTML, like Gecko) CriOS/21.0.1180.80 Mobile/9B206 Safari/7534.48.3 (6FF046A0-1BC4-4E7D-8A9D-6BF17622A123)",
+				"HTTP_ACCEPT":           "application/json, text/javascript, */*; q=0.01",
+				"HTTP_ACCEPT_LANGUAGE":  "en-us,en;q=0.5",
+				"HTTP_ACCEPT_ENCODING":  "gzip, deflate",
+				"HTTP_X_REQUESTED_WITH": "XMLHttpRequest",
+				"HTTP_REFERER":          "",
+				"HTTP_PRAGMA":           "no-cache",
+				"HTTP_CACHE_CONTROL":    "no-cache",
+				"REMOTE_ADDR":           "11.22.33.44",
+				"REQUEST_TIME":          "01-10-2012 07:57",
+			},
+			httpHeadersForMobile: true,
+			isMobile:             true,
+			isTablet:             true,
+			customValues: []basicMethodsStructCustomValue{
+				basicMethodsStructCustomValue{
+					key:   IPHONE,
+					value: false,
+				},
+				basicMethodsStructCustomValue{
+					key:   IOS,
+					value: true,
+				},
+				basicMethodsStructCustomValue{
+					key:   9999999,
+					value: false,
+				},
+			},
+		},
 	}
 }
 
@@ -165,10 +203,15 @@ func TestBasicMethods(t *testing.T) {
 		}
 
 		for _, customValue := range data.customValues {
-			if customValue.value != detect.Is(customValue.name) {
+			if customValue.value != detect.Is(customValue.name) && customValue.value != detect.Is(customValue.key) {
 				t.Errorf("Is(%s) detetction failed", customValue.name)
 			}
 		}
+	}
+
+	notSupported := detect.Is(1.0)
+	if false != notSupported {
+		t.Errorf("Type is not supported.")
 	}
 }
 
@@ -308,7 +351,7 @@ func TestVersionExtraction(t *testing.T) {
 func TestPreCompileRegexRules(t *testing.T) {
 	detect := NewMobileDetect(httpRequest, nil)
 	detect.PreCompileRegexRules()
-	e := len(detect.rules.MobileDetectionRules())
+	e := len(detect.rules.mobileDetectionRules())
 	c := len(detect.compiledRegexRules)
 	if c != e {
 		t.Errorf("Compiled rules are not being cached.\n Rules: %d\n Cached: %d\n", e, c)
