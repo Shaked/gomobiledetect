@@ -29,6 +29,11 @@ The package is imported from [MobileDetect](http://www.mobiledetect.net) which w
         if detect.IsTablet() {
             // do some tablet stuff 
         }
+        
+        if detect.Is(gomobiledetect.IPHONE) { 
+            // do something with iPhone
+        }
+        
         deviceProperty := "iPhone"
         if detect.VersionFloat(deviceProperty) > 6 { 
             // do something with iPhone v6 
