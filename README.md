@@ -24,12 +24,16 @@ The package is imported from [MobileDetect](http://www.mobiledetect.net) which w
 #### Benchmarking 
 
 ##### Version 0.1.2
+```
 BenchmarkIsMobile       2000       1001884 ns/op
 ok      github.com/Shaked/gomobiledetect    7.091s
+```
 
 ##### Version 0.2.0
+```
 BenchmarkIsMobile     100000         19278 ns/op
 ok      github.com/Shaked/gomobiledetect    7.448s
+```
 
 ### Usage
 
