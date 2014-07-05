@@ -131,7 +131,7 @@ func (md *MobileDetect) VersionKey(propertyVal int) string {
 	return md.properties.version(propertyVal, md.userAgent)
 }
 
-//Deprecated: VersionFloat does the same as Version, but returns a float number good for version comparison
+//Deprecated @see VersionFloatKey
 func (md *MobileDetect) VersionFloat(propertyName interface{}) float64 {
 	switch propertyName.(type) {
 	case string:
@@ -142,7 +142,7 @@ func (md *MobileDetect) VersionFloat(propertyName interface{}) float64 {
 	return 0.0
 }
 
-//Deprecated: Version detects the browser version returning as string
+//Deprecated @see VersionKey
 func (md *MobileDetect) Version(propertyName interface{}) string {
 	switch propertyName.(type) {
 	case string:
