@@ -43,6 +43,11 @@ The package is imported from [MobileDetect](http://www.mobiledetect.net) which w
             // do something with iPhone
         }
         
+        if detect.VersionFloat(gomobiledetect.PROP_IPHONE) > 6 { 
+            // do something with iPhone v6 
+        } 
+        
+        //Deprecated, still works but will be removed in the near future
         deviceProperty := "iPhone"
         if detect.VersionFloat(deviceProperty) > 6 { 
             // do something with iPhone v6 
