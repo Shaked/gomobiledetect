@@ -20,6 +20,16 @@ var uaListTests = []struct {
 	userAgent string
 	er        expectedResult
 }{
+	//test empty version name
+	{
+		`Mozilla/5.0 (Linux; U; Android 3.2.1; en-us; A100 Build/HTK55D) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13`,
+		expectedResult{
+			true,
+			true,
+			map[string]string{``: ``},
+			"",
+		},
+	},
 	//Acer
 	{
 		`Mozilla/5.0 (Linux; U; Android 3.2.1; en-us; A100 Build/HTK55D) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13`,
@@ -7567,7 +7577,7 @@ func TestUaList(t *testing.T) {
 				for name, v := range er.version {
 					actualVersion := detect.Version(name)
 					if v != actualVersion {
-						t.Errorf("expected version: %s, actual version: %s", v, actualVersion)
+						t.Errorf("[%s] expected version: %s, actual version: %s", name, v, actualVersion)
 					}
 				}
 			}

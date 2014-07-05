@@ -4,7 +4,6 @@ package gomobiledetect
 import (
 	"net/http"
 	"regexp"
-	"strconv"
 	"strings"
 )
 
@@ -24,6 +23,7 @@ type MobileDetect struct {
 	httpHeaders          map[string]string
 	mobileDetectionRules map[string]string
 	compiledRegexRules   map[string]*regexp.Regexp
+	*properties
 }
 
 // NewMobileDetect creates the MobileDetect object
@@ -36,6 +36,7 @@ func NewMobileDetect(r *http.Request, rules *rules) *MobileDetect {
 		userAgent:          r.UserAgent(),
 		httpHeaders:        getHttpHeaders(r),
 		compiledRegexRules: make(map[string]*regexp.Regexp, len(rules.mobileDetectionRules())),
+		properties:         newProperties(),
 	}
 	return md
 }
@@ -120,54 +121,14 @@ func (md *MobileDetect) Is(key interface{}) bool {
 	return false
 }
 
-// Version detects the browser version returning as string
-func (md *MobileDetect) Version(propertyName string) string {
-	if "" != propertyName {
-		properties := md.properties()
-
-		if _, ok := properties[propertyName]; ok {
-			for _, propertyMatchString := range properties[propertyName] {
-				propertyPattern := `(?is)` + strings.Replace(string(propertyMatchString), `[VER]`, verRegex, -1)
-
-				// Escape the special character which is the delimiter.
-				//propertyPattern = strings.Replace(propertyPattern, `/`, `\/`, -1)
-
-				// Identify and extract the version.
-				re := regexp.MustCompile(propertyPattern)
-				match := re.FindStringSubmatch(md.userAgent)
-				if len(match) > 0 {
-					return match[1]
-				}
-			}
-		}
-	}
-	return ""
-}
-
 // VersionFloat does the same as Version, but returns a float number good for version comparison
 func (md *MobileDetect) VersionFloat(propertyName string) float64 {
-	version := md.Version(propertyName)
-	replacer := strings.NewReplacer(`_`, `.`, `/`, `.`)
-	version = replacer.Replace(version)
+	return md.properties.versionFloat(propertyName, md.userAgent)
+}
 
-	versionNumbers := strings.Split(version, `.`)
-
-	versionNumbersLength := len(versionNumbers)
-	if versionNumbersLength > 1 {
-		firstNumber := versionNumbers[0]
-		retVersion := make([]string, (versionNumbersLength - 1))
-		for i := 1; i < versionNumbersLength; i++ {
-			retVersion[(i - 1)] = strings.Replace(versionNumbers[i], `.`, ``, -1)
-		}
-
-		version = firstNumber + `.` + strings.Join(retVersion, ``)
-	}
-	versionFloat, err := strconv.ParseFloat(version, 64)
-
-	if nil != err {
-		return 0.0
-	}
-	return versionFloat
+// Version detects the browser version returning as string
+func (md *MobileDetect) Version(propertyName string) string {
+	return md.properties.versionByName(propertyName, md.userAgent)
 }
 
 //Search for a certain key in the rules array.
@@ -271,72 +232,6 @@ func (md *MobileDetect) mobileHeaderMatches() map[string][]string {
 			"application/vnd.wap.xhtml+xml",
 		},
 		"HTTP_UA_CPU": []string{"ARM"},
-	}
-}
-
-// Properties helps parsing User Agent string, extracting useful segments of text.
-//VER refers to the regular expression defined in the constant self::VER.
-func (md *MobileDetect) properties() map[string][]string {
-	return map[string][]string{
-
-		// Build
-		`Mobile`:   []string{`Mobile/[VER]`},
-		`Build`:    []string{`Build/[VER]`},
-		`Version`:  []string{`Version/[VER]`},
-		`VendorID`: []string{`VendorID/[VER]`},
-
-		// Devices
-		`iPad`:   []string{`iPad.*CPU[a-z ]+[VER]`},
-		`iPhone`: []string{`iPhone.*CPU[a-z ]+[VER]`},
-		`iPod`:   []string{`iPod.*CPU[a-z ]+[VER]`},
-		//`BlackBerry`    : array(`BlackBerry[VER]`, `BlackBerry [VER];`),
-		`Kindle`: []string{`Kindle/[VER]`},
-
-		// Browser
-		`Chrome`: []string{`Chrome/[VER]`, `CriOS/[VER]`, `CrMo/[VER]`},
-		`Coast`:  []string{`Coast/[VER]`},
-		`Dolfin`: []string{`Dolfin/[VER]`},
-		// @reference: https://developer.mozilla.org/en-US/docs/User_Agent_Strings_Reference
-		`Firefox`: []string{`Firefox/[VER]`},
-		`Fennec`:  []string{`Fennec/[VER]`},
-		// @reference: http://msdn.microsoft.com/en-us/library/ms537503(v=vs.85).aspx
-		`IE`: []string{`IEMobile/[VER];`, `IEMobile [VER]`, `MSIE [VER];`},
-		// http://en.wikipedia.org/wiki/NetFront
-		`NetFront`:       []string{`NetFront/[VER]`},
-		`NokiaBrowser`:   []string{`NokiaBrowser/[VER]`},
-		`Opera`:          []string{` OPR/[VER]`, `Opera Mini/[VER]`, `Version/[VER]`},
-		`Opera Mini`:     []string{`Opera Mini/[VER]`},
-		`Opera Mobi`:     []string{`Version/[VER]`},
-		`UC Browser`:     []string{`UC Browser[VER]`},
-		`MQQBrowser`:     []string{`MQQBrowser/[VER]`},
-		`MicroMessenger`: []string{`MicroMessenger/[VER]`},
-		// @note: Safari 7534.48.3 is actually Version 5.1.
-		// @note: On BlackBerry the Version is overwriten by the OS.
-		`Safari`:  []string{`Version/[VER]`, `Safari/[VER]`},
-		`Skyfire`: []string{`Skyfire/[VER]`},
-		`Tizen`:   []string{`Tizen/[VER]`},
-		`Webkit`:  []string{`webkit[ /][VER]`},
-
-		// Engine
-		`Gecko`:   []string{`Gecko/[VER]`},
-		`Trident`: []string{`Trident/[VER]`},
-		`Presto`:  []string{`Presto/[VER]`},
-
-		// OS
-		`iOS`:        []string{` \bOS\b [VER] `},
-		`Android`:    []string{`Android [VER]`},
-		`BlackBerry`: []string{`BlackBerry[\w]+/[VER]`, `BlackBerry.*Version/[VER]`, `Version/[VER]`},
-		`BREW`:       []string{`BREW [VER]`},
-		`Java`:       []string{`Java/[VER]`},
-		// @reference: http://windowsteamblog.com/windows_phone/b/wpdev/archive/2011/08/29/introducing-the-ie9-on-windows-phone-mango-user-agent-string.aspx
-		// @reference: http://en.wikipedia.org/wiki/Windows_NT#Releases
-		`Windows Phone OS`: []string{`Windows Phone OS [VER]`, `Windows Phone [VER]`},
-		`Windows Phone`:    []string{`Windows Phone [VER]`},
-		`Windows CE`:       []string{`Windows CE/[VER]`},
-		// http://social.msdn.microsoft.com/Forums/en-US/windowsdeveloperpreviewgeneral/thread/6be392da-4d2f-41b4-8354-8dcee20c85cd
-		`Windows NT`: []string{`Windows NT [VER]`},
-		`Symbian`:    []string{`SymbianOS/[VER]`, `Symbian/[VER]`},
-		`webOS`:      []string{`webOS/[VER]`, `hpwOS/[VER];`},
 	}
 }
 
