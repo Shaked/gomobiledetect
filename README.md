@@ -15,6 +15,12 @@ The package is imported from [MobileDetect](http://www.mobiledetect.net) which w
 
     $ go get github.com/Shaked/gomobiledetect 
 
+### Updates 
+
+- This version supports a new method ```IsKey(key int)```. This method will replace the ```Is(key string)``` method in the future. All keys can be found [here](https://github.com/Shaked/gomobiledetect/blob/maps-to-lists/rules.go#L4)
+
+- The ```Is(key string)``` has been changed to support both ```string``` and ```int``` using the ```interface{}```. This support **will be removed in the future**
+
 ### Usage
 
     import "github.com/Shaked/gomobiledetect"
@@ -28,7 +34,7 @@ The package is imported from [MobileDetect](http://www.mobiledetect.net) which w
             // do some tablet stuff 
         }
         
-        if detect.Is(gomobiledetect.IPHONE) { 
+        if detect.IsKey(gomobiledetect.IPHONE) { 
             // do something with iPhone
         }
         
