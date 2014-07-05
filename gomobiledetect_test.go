@@ -273,7 +273,7 @@ func TestNonMobileQuickHeaders(t *testing.T) {
 
 type versionDataStruct struct {
 	userAgent    string
-	property     string
+	property     interface{}
 	strVersion   string
 	floatVersion float64
 }
@@ -319,6 +319,18 @@ func VersionData() []versionDataStruct {
 		versionDataStruct{
 			userAgent:    `Mozilla/5.0 (BlackBerry; U; BlackBerry 9700; en-US) AppleWebKit/534.8  (KHTML, like Gecko) Version/6.0.0.448 Mobile Safari/534.8`,
 			property:     `Unknown property`,
+			strVersion:   ``,
+			floatVersion: 0.0,
+		},
+		versionDataStruct{
+			userAgent:    `Mozilla/5.0 (BlackBerry; U; BlackBerry 9700; en-US) AppleWebKit/534.8  (KHTML, like Gecko) Version/6.0.0.448 Mobile Safari/534.8`,
+			property:     struct{}{},
+			strVersion:   ``,
+			floatVersion: 0.0,
+		},
+		versionDataStruct{
+			userAgent:    `Mozilla/5.0 (BlackBerry; U; BlackBerry 9700; en-US) AppleWebKit/534.8  (KHTML, like Gecko) Version/6.0.0.448 Mobile Safari/534.8`,
+			property:     PROP_ANDROID,
 			strVersion:   ``,
 			floatVersion: 0.0,
 		},

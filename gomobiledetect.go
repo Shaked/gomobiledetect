@@ -122,13 +122,35 @@ func (md *MobileDetect) Is(key interface{}) bool {
 }
 
 // VersionFloat does the same as Version, but returns a float number good for version comparison
-func (md *MobileDetect) VersionFloat(propertyName string) float64 {
-	return md.properties.versionFloat(propertyName, md.userAgent)
+func (md *MobileDetect) VersionFloatKey(propertyVal int) float64 {
+	return md.properties.versionFloat(propertyVal, md.userAgent)
 }
 
 // Version detects the browser version returning as string
-func (md *MobileDetect) Version(propertyName string) string {
-	return md.properties.versionByName(propertyName, md.userAgent)
+func (md *MobileDetect) VersionKey(propertyVal int) string {
+	return md.properties.version(propertyVal, md.userAgent)
+}
+
+//Deprecated: VersionFloat does the same as Version, but returns a float number good for version comparison
+func (md *MobileDetect) VersionFloat(propertyName interface{}) float64 {
+	switch propertyName.(type) {
+	case string:
+		return md.properties.versionFloatName(propertyName.(string), md.userAgent)
+	case int:
+		return md.VersionFloatKey(propertyName.(int))
+	}
+	return 0.0
+}
+
+//Deprecated: Version detects the browser version returning as string
+func (md *MobileDetect) Version(propertyName interface{}) string {
+	switch propertyName.(type) {
+	case string:
+		return md.properties.versionByName(propertyName.(string), md.userAgent)
+	case int:
+		return md.VersionKey(propertyName.(int))
+	}
+	return ""
 }
 
 //Search for a certain key in the rules array.

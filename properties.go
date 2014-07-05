@@ -143,17 +143,35 @@ func (p *properties) version(propertyVal int, userAgent string) string {
 	return ""
 }
 
+func (p *properties) nameToKey(propertyName string) int {
+	propertyName = strings.ToLower(propertyName)
+	propertyVal, ok := propertiesNameToVal[propertyName]
+	if !ok {
+		return -1
+	}
+	return propertyVal
+}
+
 func (p *properties) versionByName(propertyName, userAgent string) string {
 	if "" != propertyName {
-		propertyName := strings.ToLower(propertyName)
-		propertyVal := propertiesNameToVal[propertyName]
-		return p.version(propertyVal, userAgent)
+		propertyVal := p.nameToKey(propertyName)
+		if -1 != propertyVal {
+			return p.version(propertyVal, userAgent)
+		}
 	}
 	return ""
 }
 
-func (p *properties) versionFloat(propertyName, userAgent string) float64 {
-	version := p.versionByName(propertyName, userAgent)
+func (p *properties) versionFloatName(propertyName, userAgent string) float64 {
+	propertyVal := p.nameToKey(propertyName)
+	if -1 != propertyVal {
+		return p.versionFloat(propertyVal, userAgent)
+	}
+	return 0.0
+}
+
+func (p *properties) versionFloat(propertyVal int, userAgent string) float64 {
+	version := p.version(propertyVal, userAgent)
 	replacer := strings.NewReplacer(`_`, `.`, `/`, `.`)
 	version = replacer.Replace(version)
 
