@@ -38,6 +38,11 @@ The package is imported from [MobileDetect](http://www.mobiledetect.net) which w
             // do something with iPhone
         }
         
+        //Deprecated, still works but will be removed in the near future
+        if detect.Is("iphone") { 
+            // do something with iPhone
+        }
+        
         deviceProperty := "iPhone"
         if detect.VersionFloat(deviceProperty) > 6 { 
             // do something with iPhone v6 
