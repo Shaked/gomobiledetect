@@ -8,6 +8,9 @@ packages:
 test: 
 	go test -v 
 
+bench:
+	go test -bench=.
+
 cover: packages
 	rm -rf ./cover.*
 	touch cover.json

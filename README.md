@@ -17,9 +17,9 @@ The package is imported from [MobileDetect](http://www.mobiledetect.net) which w
 
 ### Updates 
 
-- This version supports a new method ```IsKey(key int)```. This method will replace the ```Is(key string)``` method in the future. All keys can be found [here](https://github.com/Shaked/gomobiledetect/blob/maps-to-lists/rules.go#L4)
+- This version introduces a new method ```IsKey(key int)```. This method is faster than the ```Is(key string)```. All keys can be found [here](https://github.com/Shaked/gomobiledetect/blob/maps-to-lists/rules.go#L4)
 
-- The ```Is(key string)``` has been changed to support both ```string``` and ```int``` using the ```interface{}```. This support **will be removed in the future**
+- The ```Is(key string)``` has been changed to support both ```string``` and ```int``` using the ```interface{}```. 
 
 ### Usage
 
@@ -38,7 +38,6 @@ The package is imported from [MobileDetect](http://www.mobiledetect.net) which w
             // do something with iPhone
         }
         
-        //Deprecated, still works but will be removed in the near future
         if detect.Is("iphone") { 
             // do something with iPhone
         }
@@ -47,7 +46,6 @@ The package is imported from [MobileDetect](http://www.mobiledetect.net) which w
             // do something with iPhone v6 
         } 
         
-        //Deprecated, still works but will be removed in the near future
         deviceProperty := "iPhone"
         if detect.VersionFloat(deviceProperty) > 6 { 
             // do something with iPhone v6 

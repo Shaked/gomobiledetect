@@ -104,7 +104,7 @@ func (md *MobileDetect) IsKey(key int) bool {
 	return md.matchUAAgainstKey(key)
 }
 
-// Deprecated, Is compared the detected browser with a "rule"
+// It is recommended to use IsKey instead
 func (md *MobileDetect) Is(key interface{}) bool {
 	switch key.(type) {
 	case string:
@@ -131,7 +131,7 @@ func (md *MobileDetect) VersionKey(propertyVal int) string {
 	return md.properties.version(propertyVal, md.userAgent)
 }
 
-//Deprecated @see VersionFloatKey
+// It is recommended to use VersionFloatKey instead
 func (md *MobileDetect) VersionFloat(propertyName interface{}) float64 {
 	switch propertyName.(type) {
 	case string:
@@ -142,7 +142,7 @@ func (md *MobileDetect) VersionFloat(propertyName interface{}) float64 {
 	return 0.0
 }
 
-//Deprecated @see VersionKey
+// It is recommended to use VersionKey instead
 func (md *MobileDetect) Version(propertyName interface{}) string {
 	switch propertyName.(type) {
 	case string:

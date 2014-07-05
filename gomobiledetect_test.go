@@ -370,11 +370,45 @@ func TestPreCompileRegexRules(t *testing.T) {
 	}
 }
 
-func BenchmarkMatch(b *testing.B) {
+func BenchmarkIsMobile(b *testing.B) {
 	req, _ := http.NewRequest("GET", "URL", strings.NewReader(""))
 	detect := NewMobileDetect(req, nil)
 	detect.SetUserAgent(`Mozilla/5.0 (BlackBerry; U; BlackBerry 9700; en-US) AppleWebKit/534.8  (KHTML, like Gecko) Version/6.0.0.448 Mobile Safari/534.8`)
 	for n := 0; n < b.N; n++ {
 		detect.IsMobile()
+	}
+}
+
+func BenchmarkIs(b *testing.B) {
+	req, _ := http.NewRequest("GET", "URL", strings.NewReader(""))
+	detect := NewMobileDetect(req, nil)
+	detect.SetUserAgent(`Mozilla/5.0 (BlackBerry; U; BlackBerry 9700; en-US) AppleWebKit/534.8  (KHTML, like Gecko) Version/6.0.0.448 Mobile Safari/534.8`)
+	for n := 0; n < b.N; n++ {
+		detect.Is("iphone")
+	}
+}
+func BenchmarkIsKey(b *testing.B) {
+	req, _ := http.NewRequest("GET", "URL", strings.NewReader(""))
+	detect := NewMobileDetect(req, nil)
+	detect.SetUserAgent(`Mozilla/5.0 (BlackBerry; U; BlackBerry 9700; en-US) AppleWebKit/534.8  (KHTML, like Gecko) Version/6.0.0.448 Mobile Safari/534.8`)
+	for n := 0; n < b.N; n++ {
+		detect.IsKey(IPHONE)
+	}
+}
+
+func BenchmarkVersion(b *testing.B) {
+	req, _ := http.NewRequest("GET", "URL", strings.NewReader(""))
+	detect := NewMobileDetect(req, nil)
+	detect.SetUserAgent(`Mozilla/5.0 (BlackBerry; U; BlackBerry 9700; en-US) AppleWebKit/534.8  (KHTML, like Gecko) Version/6.0.0.448 Mobile Safari/534.8`)
+	for n := 0; n < b.N; n++ {
+		detect.Version("iphone")
+	}
+}
+func BenchmarkVersionKey(b *testing.B) {
+	req, _ := http.NewRequest("GET", "URL", strings.NewReader(""))
+	detect := NewMobileDetect(req, nil)
+	detect.SetUserAgent(`Mozilla/5.0 (BlackBerry; U; BlackBerry 9700; en-US) AppleWebKit/534.8  (KHTML, like Gecko) Version/6.0.0.448 Mobile Safari/534.8`)
+	for n := 0; n < b.N; n++ {
+		detect.VersionKey(PROP_IPHONE)
 	}
 }
