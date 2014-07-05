@@ -5,8 +5,8 @@ packages:
 	go get github.com/modocache/gover
 	go get github.com/mattn/goveralls
 
-test: packages
-		go test -v 
+test: 
+	go test -v 
 
 cover: packages
 	rm -rf ./cover.*
