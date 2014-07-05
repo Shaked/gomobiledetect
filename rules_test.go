@@ -1,4 +1,4 @@
-package gomobiledetect
+package mobiledetect
 
 import "testing"
 
