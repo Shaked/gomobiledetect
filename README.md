@@ -17,7 +17,7 @@ The package is imported from [MobileDetect](http://www.mobiledetect.net) which w
 
 ### Updates 
 
-#### Version 0.3.0
+#### Version 1.0.0
 - The package name had been changed to *mobiledetect*. 
  
 #### Version 0.2.0
