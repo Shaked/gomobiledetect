@@ -6261,6 +6261,16 @@ var uaListTests = []struct {
 			``,
 		},
 	},
+	//Teclast
+	{
+		`Mozilla/5.0 (Linux; Android 4.4.2; P98 3G\xE5\x85\xAB\xE6\xA0\xB8(A3HY) Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Safari/537.36`,
+		expectedResult{
+			true,
+			true,
+			nil,
+			``,
+		},
+	},
 	//Telstra
 	{
 		`Mozilla/5.0 (Linux; U; Android 2.3.7; en-au; T-Hub2 Build/TVA301TELBG3) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1`,

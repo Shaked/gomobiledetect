@@ -103,6 +103,7 @@ const (
 	IJOYTABLET
 	HUDL
 	TELSTRATABLET
+	TECLASTTABLET
 	VISTURETABLET
 
 	ANDROIDOS = iota
@@ -442,6 +443,9 @@ var (
 		// @ref: http://www.telstra.com.au/home-phone/thub-2/
 		//TELSTRATABLET:
 		`T-Hub2`,
+		//TECLASTTABLET:
+		`\(Linux;\sAndroid\s[\d\.]+;\s[PXGAT]\d{2,}.*\sBuild/.*?\)`,
+
 		//`GenericTablet`: `Android.*\b97D\b|Tablet(?!.*PC)|ViewPad7|BNTV250A|MID-WCDMA|LogicPD Zoom2|\bA7EB\b|CatNova8|A1_07|CT704|CT1002|\bM721\b|rk30sdk|\bEVOTAB\b|M758A|ET904|ALUMIUM10|Smartfren Tab`,
 
 	}
@@ -628,6 +632,7 @@ var (
 		`proscantablet`:     PROSCANTABLET,
 		`visturetablet`:     VISTURETABLET,
 		`crestatablet`:      CRESTATABLET,
+		`teclasttablet`:     TECLASTTABLET,
 		`androidos`:         ANDROIDOS,
 		`blackberryos`:      BLACKBERRYOS,
 		`palmos`:            PALMOS,
