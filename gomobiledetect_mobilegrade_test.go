@@ -55,8 +55,6 @@ var mobileGradeTests = []struct {
 	{"Microsoft-WebDAV-MiniRedir/6.1.7600", MOBILE_GRADE_C},
 	{"Microsoft-WebDAV-MiniRedir/6.1.7601", MOBILE_GRADE_C},
 	{"Microsoft-WebDAV-MiniRedir/6.2.9200", MOBILE_GRADE_C},
-	{"MobileSafari/8536.25 CFNetwork/609 Darwin/13.0.0", MOBILE_GRADE_C},
-	{"MobileSafari/8536.25 CFNetwork/609.1.4 Darwin/13.0.0", MOBILE_GRADE_C},
 	{"Mozilla/3.0 (compatible; Indy Library)", MOBILE_GRADE_C},
 	{"Mozilla/3.0 (OS/2; U)", MOBILE_GRADE_C},
 	{"Mozilla/4.0 (compatible; MS FrontPage 12.0)", MOBILE_GRADE_C},
