@@ -1,4 +1,4 @@
-package gomobiledetect
+package mobiledetect
 
 import (
 	"regexp"
@@ -29,6 +29,8 @@ const (
 	PROP_UC_BROWSER
 	PROP_MQQBROWSER
 	PROP_MICROMESSENGER
+	PROP_BAIDUBOXAPP
+	PROP_BAIDUBROWSER
 	PROP_SAFARI
 	PROP_SKYFIRE
 	PROP_TIZEN
@@ -73,6 +75,8 @@ var (
 		"uc browser":       PROP_UC_BROWSER,
 		"mqqbrowser":       PROP_MQQBROWSER,
 		"micromessenger":   PROP_MICROMESSENGER,
+		"baiduboxapp":      PROP_BAIDUBOXAPP,
+		"baidubrowser":     PROP_BAIDUBROWSER,
 		"safari":           PROP_SAFARI,
 		"skyfire":          PROP_SKYFIRE,
 		"tizen":            PROP_TIZEN,
@@ -147,6 +151,10 @@ var (
 		[]string{`MQQBrowser/[VER]`},
 		//PROP_MICROMESSENGER:
 		[]string{`MicroMessenger/[VER]`},
+		//PROP_BAIDUBOXAPP
+		[]string{`baiduboxapp/[VER]`},
+		//PROP_BAIDUBROWSER
+		[]string{`baidubrowser/[VER]`},
 		// @note: Safari 7534.48.3 is actually Version 5.1.
 		// @note: On BlackBerry the Version is overwriten by the OS.
 		//PROP_SAFARI:

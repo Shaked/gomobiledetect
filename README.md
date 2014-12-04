@@ -17,6 +17,10 @@ The package is imported from [MobileDetect](http://www.mobiledetect.net) which w
 
 ### Updates 
 
+#### Version 1.0.0
+- The package name had been changed to *mobiledetect*. 
+ 
+#### Version 0.2.0
 - This version introduces a new method ```IsKey(key int)```. This method is faster than the ```Is(key string)```. All keys can be found [here](https://github.com/Shaked/gomobiledetect/blob/maps-to-lists/rules.go#L4)
 
 - The ```Is(key string)``` has been changed to support both ```string``` and ```int``` using the ```interface{}```. 
@@ -40,7 +44,7 @@ ok      github.com/Shaked/gomobiledetect    7.448s
     import "github.com/Shaked/gomobiledetect"
     //code here 
     func handler(w http.ResponseWriter, r *http.Request) {
-        detect := gomobiledetect.NewMobileDetect(r, nil)
+        detect := mobiledetect.NewMobileDetect(r, nil)
         if detect.IsMobile() { 
             // do some mobile stuff 
         }
@@ -48,7 +52,7 @@ ok      github.com/Shaked/gomobiledetect    7.448s
             // do some tablet stuff 
         }
         
-        if detect.IsKey(gomobiledetect.IPHONE) { 
+        if detect.IsKey(mobiledetect.IPHONE) { 
             // do something with iPhone
         }
         
@@ -56,7 +60,7 @@ ok      github.com/Shaked/gomobiledetect    7.448s
             // do something with iPhone
         }
         
-        if detect.VersionFloat(gomobiledetect.PROP_IPHONE) > 6 { 
+        if detect.VersionFloat(mobiledetect.PROP_IPHONE) > 6 { 
             // do something with iPhone v6 
         } 
         
