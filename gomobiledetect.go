@@ -2,9 +2,12 @@
 package mobiledetect
 
 import (
+	"log"
 	"net/http"
 	"regexp"
 	"strings"
+
+	"github.com/gorilla/context"
 )
 
 const (
@@ -15,6 +18,53 @@ const (
 	MOBILE_GRADE_B = "B"
 	MOBILE_GRADE_C = "C"
 )
+
+// Vars returns the route variables for the current request, if any.
+func Device(r *http.Request) string {
+	if rv := context.Get(r, "Device"); rv != nil {
+		return rv.(string)
+	}
+	return ""
+}
+
+type DeviceHandler interface {
+	Mobile(w http.ResponseWriter, r *http.Request, m *MobileDetect)
+	Tablet(w http.ResponseWriter, r *http.Request, m *MobileDetect)
+	Desktop(w http.ResponseWriter, r *http.Request, m *MobileDetect)
+}
+
+func Handler(h DeviceHandler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		m := NewMobileDetect(r, nil)
+		if m.IsMobile() {
+			log.Println("Mobile")
+			h.Mobile(w, r, m)
+		} else if m.IsTablet() {
+			log.Println("Tablet")
+			h.Tablet(w, r, m)
+		} else {
+			log.Println("Desktop")
+			h.Desktop(w, r, m)
+		}
+	})
+}
+
+func HandlerMux(s *http.ServeMux) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		m := NewMobileDetect(r, nil)
+		if m.IsMobile() {
+			log.Println("Mobile")
+			context.Set(r, "Device", "Mobile")
+		} else if m.IsTablet() {
+			log.Println("Tablet")
+			context.Set(r, "Device", "Tablet")
+		} else {
+			log.Println("Desktop")
+			context.Set(r, "Device", "Desktop")
+		}
+		s.ServeHTTP(w, r)
+	})
+}
 
 // MobileDetect holds the structure to figure out a browser from a UserAgent string and methods necessary to make it happen
 type MobileDetect struct {
