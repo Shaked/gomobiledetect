@@ -19,7 +19,7 @@ The package is imported from [MobileDetect](http://www.mobiledetect.net) which w
 
 #### Version 1.2.0 
 
-- Now supports using ```Http.Handler``` implementation. See [examples](https://github.com/Shaked/gomobiledetect/examples) 
+- Now supports using ```Http.Handler``` implementation. See [examples](https://github.com/Shaked/gomobiledetect/tree/master/examples) 
 
 #### Version 1.0.0
 - The package name had been changed to *mobiledetect*. 
