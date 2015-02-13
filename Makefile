@@ -15,7 +15,7 @@ test:
 bench:
 	go test -bench=.
 
-cover: packages
+cover: packages packages-testing
 	rm -rf ./cover.*
 	touch cover.json
 	gocov test . -v >> cover.json; 
