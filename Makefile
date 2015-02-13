@@ -1,5 +1,7 @@
 packages: 
 	go get github.com/gorilla/context
+
+packages-testing:
 	go get golang.org/x/tools/cmd/cover 
 	go get github.com/axw/gocov/gocov
 	go get gopkg.in/matm/v1/gocov-html
