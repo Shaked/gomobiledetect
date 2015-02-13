@@ -19,5 +19,5 @@ func main() {
 	mux := http.NewServeMux()
 	h := &Handler{}
 	mux.Handle("/check", h)
-	http.ListenAndServe(":10001", mobiledetect.HandlerMux(mux))
+	http.ListenAndServe(":10001", mobiledetect.HandlerMux(mux, nil))
 }

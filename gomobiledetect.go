@@ -2,7 +2,6 @@
 package mobiledetect
 
 import (
-	"log"
 	"net/http"
 	"regexp"
 	"strings"
@@ -33,33 +32,27 @@ type DeviceHandler interface {
 	Desktop(w http.ResponseWriter, r *http.Request, m *MobileDetect)
 }
 
-func Handler(h DeviceHandler) http.Handler {
+func Handler(h DeviceHandler, rules *rules) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		m := NewMobileDetect(r, nil)
+		m := NewMobileDetect(r, rules)
 		if m.IsMobile() {
-			log.Println("Mobile")
 			h.Mobile(w, r, m)
 		} else if m.IsTablet() {
-			log.Println("Tablet")
 			h.Tablet(w, r, m)
 		} else {
-			log.Println("Desktop")
 			h.Desktop(w, r, m)
 		}
 	})
 }
 
-func HandlerMux(s *http.ServeMux) http.Handler {
+func HandlerMux(s *http.ServeMux, rules *rules) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		m := NewMobileDetect(r, nil)
+		m := NewMobileDetect(r, rules)
 		if m.IsMobile() {
-			log.Println("Mobile")
 			context.Set(r, "Device", "Mobile")
 		} else if m.IsTablet() {
-			log.Println("Tablet")
 			context.Set(r, "Device", "Tablet")
 		} else {
-			log.Println("Desktop")
 			context.Set(r, "Device", "Desktop")
 		}
 		s.ServeHTTP(w, r)

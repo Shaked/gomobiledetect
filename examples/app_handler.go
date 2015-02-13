@@ -33,6 +33,6 @@ func main() {
 	log.Println("Starting local server http://localhost:10001/check (cmd+click to open from terminal)")
 	mux := http.NewServeMux()
 	h := &Handler{}
-	mux.Handle("/", mobiledetect.Handler(h))
+	mux.Handle("/", mobiledetect.Handler(h, nil))
 	http.ListenAndServe(":10001", mux)
 }
