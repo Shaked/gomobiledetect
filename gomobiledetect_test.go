@@ -1,7 +1,9 @@
 package mobiledetect
 
 import (
+	"log"
 	"net/http"
+	"net/http/httptest"
 	"strings"
 	"testing"
 )
@@ -15,12 +17,37 @@ type basicMethodsStruct struct {
 	isMobile             bool
 	isTablet             bool
 	customValues         []basicMethodsStructCustomValue
+
+	handlerCalled string
 }
 
 type basicMethodsStructCustomValue struct {
 	name  string
 	key   int
 	value bool
+}
+
+func (h *basicMethodsStruct) Mobile(w http.ResponseWriter,
+	r *http.Request,
+	m *MobileDetect,
+) {
+	h.handlerCalled = "mobile"
+}
+func (h *basicMethodsStruct) Tablet(w http.ResponseWriter,
+	r *http.Request,
+	m *MobileDetect,
+) {
+	h.handlerCalled = "tablet"
+}
+func (h *basicMethodsStruct) Desktop(w http.ResponseWriter,
+	r *http.Request,
+	m *MobileDetect,
+) {
+	h.handlerCalled = "desktop"
+}
+
+func (h *basicMethodsStruct) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	h.handlerCalled = Device(r)
 }
 
 func BasicMethodsData() []basicMethodsStruct {
@@ -213,6 +240,12 @@ func TestBasicMethods(t *testing.T) {
 	if false != notSupported {
 		t.Errorf("Type is not supported.")
 	}
+
+	r, _ := http.NewRequest("GET", "/", nil)
+	emptyResult := Device(r)
+	if "" != emptyResult {
+		t.Errorf("Result is not empty: %s", emptyResult)
+	}
 }
 
 //special headers that give `quick` indication that a device is mobile
@@ -367,6 +400,57 @@ func TestPreCompileRegexRules(t *testing.T) {
 	c := len(detect.compiledRegexRules)
 	if c != e {
 		t.Errorf("Compiled rules are not being cached.\n Rules: %d\n Cached: %d\n", e, c)
+	}
+}
+
+func TestHandler(t *testing.T) {
+	expectedResults := map[string]string{
+		"mobile":  `Mozilla/5.0 (iPod touch; CPU iPhone OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A4449d Safari/9537.53`,
+		"tablet":  `Mozilla/5.0 (iPad; CPU OS 5_1_1 like Mac OS X; en-us) AppleWebKit/534.46.0 (KHTML, like Gecko) CriOS/21.0.1180.80 Mobile/9B206 Safari/7534.48.3 (6FF046A0-1BC4-4E7D-8A9D-6BF17622A123)`,
+		"desktop": "UNKNOWN",
+	}
+
+	deviceHandler := &basicMethodsStruct{}
+	h := Handler(deviceHandler, nil)
+
+	s := httptest.NewServer(h)
+	req, _ := http.NewRequest("GET", s.URL, nil)
+	c := http.Client{}
+	for deviceType, userAgent := range expectedResults {
+		req.Header.Set("User-Agent", userAgent)
+		_, err := c.Do(req)
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+		if deviceHandler.handlerCalled != deviceType {
+			t.Errorf("actual: %s instead: %s", deviceHandler.handlerCalled, deviceType)
+		}
+	}
+}
+
+func TestHandlerMux(t *testing.T) {
+	expectedResults := map[string]string{
+		"Mobile":  `Mozilla/5.0 (iPod touch; CPU iPhone OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A4449d Safari/9537.53`,
+		"Tablet":  `Mozilla/5.0 (iPad; CPU OS 5_1_1 like Mac OS X; en-us) AppleWebKit/534.46.0 (KHTML, like Gecko) CriOS/21.0.1180.80 Mobile/9B206 Safari/7534.48.3 (6FF046A0-1BC4-4E7D-8A9D-6BF17622A123)`,
+		"Desktop": "UNKNOWN",
+	}
+	mux := http.NewServeMux()
+	deviceHandler := &basicMethodsStruct{}
+	mux.Handle("/test", deviceHandler)
+	s := httptest.NewServer(HandlerMux(mux, nil))
+	req, _ := http.NewRequest("GET", s.URL+"/test", nil)
+	c := http.Client{}
+	for deviceType, userAgent := range expectedResults {
+		req.Header.Set("User-Agent", userAgent)
+		_, err := c.Do(req)
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+		if deviceHandler.handlerCalled != deviceType {
+			t.Errorf("actual: %s instead: %s", deviceHandler.handlerCalled, deviceType)
+		}
 	}
 }
 

@@ -789,7 +789,7 @@ type rules struct {
 // NewRules creates a object with all rules necessary to figure out a browser from a User Agent string
 func NewRules() *rules {
 	rules := &rules{namesKeys: nameToKey, phoneDevices: phoneDevices, tabletDevices: tabletDevices, operatingSystems: operatingSystems, browsers: browsers}
-	rules.setMobileDetectionRules()
+	rules.setMobileDetectionRules(nameToKey)
 	return rules
 }
 
@@ -803,7 +803,7 @@ func (r *rules) nameToKey(name string) (int, bool) {
 }
 
 //Method sets the mobile detection rules. This method is used for the magic methods $detect->is*().
-func (r *rules) setMobileDetectionRules() {
+func (r *rules) setMobileDetectionRules(nameToKey map[string]int) {
 	combined := make([]string, len(nameToKey))
 
 	j := 0

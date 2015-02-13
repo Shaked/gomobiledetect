@@ -35,10 +35,10 @@ type DeviceHandler interface {
 func Handler(h DeviceHandler, rules *rules) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		m := NewMobileDetect(r, rules)
-		if m.IsMobile() {
-			h.Mobile(w, r, m)
-		} else if m.IsTablet() {
+		if m.IsTablet() {
 			h.Tablet(w, r, m)
+		} else if m.IsMobile() {
+			h.Mobile(w, r, m)
 		} else {
 			h.Desktop(w, r, m)
 		}
@@ -48,10 +48,10 @@ func Handler(h DeviceHandler, rules *rules) http.Handler {
 func HandlerMux(s *http.ServeMux, rules *rules) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		m := NewMobileDetect(r, rules)
-		if m.IsMobile() {
-			context.Set(r, "Device", "Mobile")
-		} else if m.IsTablet() {
+		if m.IsTablet() {
 			context.Set(r, "Device", "Tablet")
+		} else if m.IsMobile() {
+			context.Set(r, "Device", "Mobile")
 		} else {
 			context.Set(r, "Device", "Desktop")
 		}
