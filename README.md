@@ -45,34 +45,12 @@ ok      github.com/Shaked/gomobiledetect    7.448s
 
 ### Usage
 
-    import "github.com/Shaked/gomobiledetect"
-    //code here 
-    func handler(w http.ResponseWriter, r *http.Request) {
-        detect := mobiledetect.NewMobileDetect(r, nil)
-        if detect.IsMobile() { 
-            // do some mobile stuff 
-        }
-        if detect.IsTablet() {
-            // do some tablet stuff 
-        }
-        
-        if detect.IsKey(mobiledetect.IPHONE) { 
-            // do something with iPhone
-        }
-        
-        if detect.Is("iphone") { 
-            // do something with iPhone
-        }
-        
-        if detect.VersionFloat(mobiledetect.PROP_IPHONE) > 6 { 
-            // do something with iPhone v6 
-        } 
-        
-        deviceProperty := "iPhone"
-        if detect.VersionFloat(deviceProperty) > 6 { 
-            // do something with iPhone v6 
-        } 
-    }
+There are different ways of using the package: 
+
+- [Basic usage](examples/app.go) 
+- [Basic router implementation](examples/router.go)
+- [Handler interface implementation](examples/app_handler.go)
+- [Mux interface implementation](examples/app_mux.go)
 
 ### License
 
