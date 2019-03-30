@@ -388,7 +388,7 @@ func TestVersionExtraction(t *testing.T) {
 
 		detectedVersionFloat := detect.VersionFloat(property)
 		if floatVersion != detectedVersionFloat {
-			t.Errorf("Float version %d is mismatched (detectedVersion %d, property %s)", floatVersion, detectedVersionFloat, property)
+			t.Errorf("Float version %f is mismatched (detectedVersion %f, property %s)", floatVersion, detectedVersionFloat, property)
 		}
 	}
 }

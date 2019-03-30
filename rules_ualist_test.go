@@ -9111,13 +9111,13 @@ func TestUaList(t *testing.T) {
 
 				if er.isMobile != isMobile {
 					result.success = false
-					result.message += fmt.Sprintf("%d: For userAgent %s\n expected result is mobile: %s got %s\n", idx, userAgent, er.isMobile, isMobile)
+					result.message += fmt.Sprintf("%d: For userAgent %s\n expected result is mobile: %t got %t\n", idx, userAgent, er.isMobile, isMobile)
 				}
 
 				isTablet := detect.IsTablet()
 				if er.isTablet != isTablet {
 					result.success = false
-					result.message += fmt.Sprintf("%d: For userAgent %s\n expected result is tablet: %s got %s\n", idx, userAgent, er.isTablet, isTablet)
+					result.message += fmt.Sprintf("%d: For userAgent %s\n expected result is tablet: %t got %t\n", idx, userAgent, er.isTablet, isTablet)
 				}
 
 				for name, v := range er.version {
